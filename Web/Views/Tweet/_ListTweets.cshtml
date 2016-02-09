@@ -1,0 +1,14 @@
+﻿@model IEnumerable<HikingPlanAndRescue.Data.Models.Tweet>
+
+
+<div class="list-group">
+    @foreach (var tweet in Model)
+    {
+        <div class="list-group-item">
+            <h4 class="list-group-item-heading">By @tweet.Author.UserName</h4>
+            <p class="list-group-item-text">
+                @tweet.Content
+            </p>
+        </div>
+    }
+</div>
