@@ -20,9 +20,9 @@
         {
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
-
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            DatabaseConfig.Config();
             AutofacConfig.RegisterAutofac();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
