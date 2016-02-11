@@ -3,12 +3,9 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
-
     using Common.Models;
-
-    using Microsoft.AspNet.Identity.EntityFramework;
-
     using HikingPlanAndRescue.Data.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -17,9 +14,9 @@
         {
         }
 
-        public IDbSet<Joke> Jokes { get; set; }
+        public virtual IDbSet<Track> Tracks { get; set; }
 
-        public IDbSet<JokeCategory> JokesCategories { get; set; }
+        public virtual IDbSet<Training> Trainings { get; set; }
 
         public static ApplicationDbContext Create()
         {

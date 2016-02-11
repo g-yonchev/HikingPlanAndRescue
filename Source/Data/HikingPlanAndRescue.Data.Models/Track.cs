@@ -1,6 +1,7 @@
 ﻿namespace HikingPlanAndRescue.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
 
@@ -8,7 +9,6 @@
     {
         public Track()
         {
-            this.CreatedOn = DateTime.UtcNow;
         }
 
         public string Title { get; set; }
@@ -22,9 +22,11 @@
 
         public double Length { get; set; }
 
-        public double AvgAscentInclination { get; set; }
+        public double Ascent { get; set; }
 
-        public double TotalAscent { get; set; }
+        public double AscentLength { get; set; }
+
+        public virtual ICollection<Training> Trainings { get; set; }
 
         //public enum TrackCategory { get; set; }
     }
