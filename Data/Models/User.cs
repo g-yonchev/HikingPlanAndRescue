@@ -14,6 +14,10 @@
         {
         }
 
+        public double Weight { get; set; }
+
+        public virtual ICollection<Track> Tracks { get; set; }
+
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

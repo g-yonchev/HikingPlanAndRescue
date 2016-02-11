@@ -176,6 +176,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Private\Controllers\TracksController.cs" />
+    <Compile Include="Areas\Private\Models\Tracks\TrackViewModel.cs" />
+    <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -185,7 +188,6 @@
     </Compile>
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
-    <Compile Include="Models\Tweet\TweetInputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -208,6 +210,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Private\Views\web.config" />
+    <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Private\Views\Tracks\Index.cshtml" />
+    <Content Include="Areas\Private\Views\Shared\_Track.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -236,10 +242,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Tweet\Index.cshtml" />
-    <Content Include="Views\Tweet\_ListTweets.cshtml" />
-    <Content Include="Views\Tweet\MyTweets.cshtml" />
-    <Content Include="Views\Tweet\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
