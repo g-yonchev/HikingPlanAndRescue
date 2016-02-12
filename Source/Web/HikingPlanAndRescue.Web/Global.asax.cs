@@ -9,7 +9,7 @@
 
     using Data;
     using Data.Migrations;
-
+    using Infrastructure.Binders;
     using Infrastructure.Mapping;
 
 #pragma warning disable SA1649 // File name must match first type name
@@ -22,6 +22,7 @@
             ViewEngines.Engines.Add(new RazorViewEngine());
             DatabaseConfig.Config();
             AutofacConfig.RegisterAutofac();
+            ModelBinders.Binders.Add(typeof(double), new DoubleModelBinder());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

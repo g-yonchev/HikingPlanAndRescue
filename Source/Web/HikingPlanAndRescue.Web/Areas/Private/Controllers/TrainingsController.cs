@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Net;
+    using System.Threading;
     using System.Web.Mvc;
     using Data.Models;
     using HikingPlanAndRescue.Web.Infrastructure.Mapping;
@@ -42,6 +43,8 @@
                 this.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                 return this.Content("This action can be invoke only by AJAX call");
             }
+
+            Thread.Sleep(3111);
 
             var trainings = this.trainings
                 .GetByUser(this.User.Identity.GetUserId(), page, pageSize)

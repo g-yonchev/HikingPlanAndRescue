@@ -12,10 +12,13 @@
         [Display(Name = "Track title")]
         public string Title { get; set; }
 
+        [Display(Name = "Length (km)")]
         public double Length { get; set; }
 
+        [Display(Name = "Ascent (m)")]
         public double Ascent { get; set; }
 
+        [Display(Name = "Ascent length (km)")]
         public double AscentLength { get; set; }
 
         [Required]

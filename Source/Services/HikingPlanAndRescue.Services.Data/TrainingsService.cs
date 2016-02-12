@@ -25,7 +25,8 @@
         {
             return this.trainings
                 .All()
-                .Where(x => x.UserId == userId).OrderBy(x => x.Id)
+                .Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.CreatedOn)
                 .Skip(page * pageSize)
                 .Take(pageSize);
         }

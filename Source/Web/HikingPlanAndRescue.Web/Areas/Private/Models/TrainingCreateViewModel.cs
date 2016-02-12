@@ -24,9 +24,11 @@
         public string Title { get; set; }
 
         [Required]
+        [Display(Name ="Water (liters)")]
         public double Water { get; set; }
 
         [Required]
+        [Display(Name ="Calories (kcal)")]
         public double Calories { get; set; }
 
         [Required(ErrorMessage = "You must add a track.")]

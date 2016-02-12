@@ -126,7 +126,9 @@
                 var formData = $('form').serialize();
                 $.post("/Private/Trainings/Predict", formData, function (data) {
                     $('#calories').val(data.Calories);
+                    $('#calories').attr('value', data.Calories);
                     $('#water').val(data.Water);
+                    $('#water').attr('value', data.Water);
                     $('#predicting').hide();
                 });
                 //$('form').attr('action', '/Private/Trainings/Predict');

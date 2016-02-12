@@ -6,7 +6,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create", "create", "trainings", null, new { @class="btn btn-primary btn-lg"})
+    @Html.ActionLink("Create", "create", "trainings", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 
 <h2>My Trainings</h2>
@@ -15,10 +15,12 @@
     @Html.Partial("_TrainingsList", Model)
 </div>
 
-<div class="row" id="loading" style="display: none">Loading...</div>
+<div class="row container" id="loading" style="display: none">
+    <div class="alert alert-info text-center">Loading...</div>
+</div>
 
 <div class="row container">
-    @Ajax.ActionLink("Load Next...", "AjaxLoadNextTrainings", new { area = "private", page = 0 },
+    @Ajax.ActionLink("Load Older...", "AjaxLoadNextTrainings", new { area = "private", page = 0 },
     new AjaxOptions
     {
         UpdateTargetId = "trainings-list",
@@ -26,6 +28,7 @@
         HttpMethod = "GET",
         InsertionMode = InsertionMode.InsertAfter,
         OnSuccess = "onLoadMoreTrainingsSuccess",
+        OnBegin = "onLoadMoreTrainingsBegin"
     }, new { @class = "btn btn-info btn-lg btn-block", id = "loadMoreTrainings" })
 </div>
 
@@ -36,9 +39,9 @@
         var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
         loadMoreTrainingsBtn.on('click', function () {
             console.log(nextPage);
-             var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
-             console.log(hrefString);
-             loadMoreTrainingsBtn.attr('href', hrefString);
+            var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
+            console.log(hrefString);
+            loadMoreTrainingsBtn.attr('href', hrefString);
             nextPage++;
         });
 
@@ -48,6 +51,12 @@
                 loadMoreTrainingsBtn.disabled = true;
                 loadMoreTrainingsBtn.text('No more');
             }
+
+            loadMoreTrainingsBtn.show();
+        }
+
+        function onLoadMoreTrainingsBegin() {
+            loadMoreTrainingsBtn.hide();
         }
     </script>
 }
