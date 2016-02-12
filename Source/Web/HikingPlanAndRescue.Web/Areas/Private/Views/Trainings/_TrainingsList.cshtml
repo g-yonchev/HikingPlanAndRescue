@@ -1,0 +1,7 @@
+﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListViewModel>
+
+@foreach (var training in Model)
+{
+    <h3>@training.Title</h3>
+        <p>Length: @training.TrackTitle (@training.TrackLength km)</p>
+}

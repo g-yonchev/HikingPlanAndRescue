@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListViewModel>
+
+@{
+    ViewBag.Title = "My Trainings";
+    ViewBag.Page = 0;
+}
+
+<p>
+    @Html.ActionLink("Create", "create", "trainings", null, new { @class="btn btn-lg"})
+</p>
+
+<h2>My Trainings</h2>
+
+<div id="trainings-list">
+    @Html.Partial("_TrainingsList")
+</div>
+
+<div id="loading" style="display: none">Loading...</div>
+
+@*<button id="btn-load-more-trainings" class="btn btn-lg">Load more...</button>*@
+
+@Ajax.ActionLink("Load Next...", "AjaxLoadNextTrainings", new { area = "private", page= 0 },
+    new AjaxOptions
+    {
+        UpdateTargetId = "trainings-list",
+        LoadingElementId = "loading",
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.InsertAfter,
+        OnSuccess = "onLoadMoreTrainingsSuccess",
+    }, new { @class = "btn btn-primary", id= "loadMoreTrainings" })
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var nextPage = 1;
+        var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
+        loadMoreTrainingsBtn.on('click', function () {
+            console.log(nextPage);
+             var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
+             console.log(hrefString);
+             loadMoreTrainingsBtn.attr('href', hrefString);
+            nextPage++;
+        });
+
+        function onLoadMoreTrainingsSuccess(data) {
+            console.log("This is the OnSuccessCallback: " + data);
+            if (!data) {
+                loadMoreTrainingsBtn.disabled = true;
+                loadMoreTrainingsBtn.text('No more');
+            }
+        }
+    </script>
+}

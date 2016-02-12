@@ -17,6 +17,7 @@
         {
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
             ApplicationDbContext.Create().Database.Initialize(true);
 
             Seed();
@@ -38,11 +39,12 @@
             }
 
             var rand = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 var user = context.Users.OrderBy(x => Guid.NewGuid()).First();
                 var training = new Training()
                 {
+                    Title = $"Training{i}",
                     Calories = rand.Next(700, 3500),
                     Water = 0.5 + (rand.NextDouble() * 3),
                     User = user,
