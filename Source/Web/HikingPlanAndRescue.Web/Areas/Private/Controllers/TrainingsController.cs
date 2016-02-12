@@ -61,7 +61,7 @@
             {
                 StartDate = date,
                 EndDate = date.AddHours(5),
-                Title = "Test training 1",
+                Title = null,
             };
 
             var testTrack = new TrackCreateViewModel()
@@ -95,6 +95,11 @@
         [HttpPost]
         public ActionResult Predict(TrainingCreateViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.Json(string.Empty);
+            }
+
             var training = this.Mapper.Map<Training>(model);
             var predictedTraining = this.trainingPredictions.PredictCaloriesAndWater(training);
             var predictedTrainingViewModel = this.Mapper.Map<TrainingCreateViewModel>(predictedTraining);

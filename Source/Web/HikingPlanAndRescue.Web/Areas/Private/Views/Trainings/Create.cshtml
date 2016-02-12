@@ -44,7 +44,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Water, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Water, new { htmlAttributes = new { @class = "form-control", id="water" } })
+                    @Html.EditorFor(model => model.Water, new { htmlAttributes = new { @class = "form-control", id = "water" } })
                     @Html.ValidationMessageFor(model => model.Water, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Calories, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Calories, new { htmlAttributes = new { @class = "form-control", id="calories"} })
+                    @Html.EditorFor(model => model.Calories, new { htmlAttributes = new { @class = "form-control", id = "calories" } })
                     @Html.ValidationMessageFor(model => model.Calories, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -115,6 +115,23 @@
     <span id="predicting" style="display:none" class="alert alert-info">PREDICTING...</span>
 </div>
 
+<div class="modal fade" id="error-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&close;</button>
+                <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body">
+                <p>Inconsistencies in model data detected. Perhaps start date is after end date or negative or non-numeric input for lengths?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
@@ -125,6 +142,13 @@
                 $('#predicting').show();
                 var formData = $('form').serialize();
                 $.post("/Private/Trainings/Predict", formData, function (data) {
+                    console.log(data);
+                    if (data === "" || !data) {
+                        $('#predicting').hide();
+                        $('#error-modal').modal();
+                        return;
+                    }
+
                     $('#calories').val(data.Calories);
                     $('#calories').attr('value', data.Calories);
                     $('#water').val(data.Water);
