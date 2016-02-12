@@ -50,8 +50,8 @@
     - Track
     - Value
 
-- MonitoredTraining
-    - TrainingSession PK,FK
+- WatchedTraining
+    - Training PK,FK
     - DateCheckedIn
     - DateCheckedOut
 

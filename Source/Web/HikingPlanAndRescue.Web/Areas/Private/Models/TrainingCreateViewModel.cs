@@ -1,18 +1,23 @@
 ﻿namespace HikingPlanAndRescue.Web.Areas.Private.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
     using Data.Models;
     using Infrastructure.Mapping;
+    using Infrastructure.Validation;
 
-    public class TrainingCreateViewModel : IMapFrom<Training>
+    public class TrainingCreateViewModel : IMapTo<Training>, IMapFrom<Training>
     {
         [Required]
+        public string UserId { get; set; }
+
+        [Required]
+        [DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date in the format dd/mm/yyyy hh:mm")]
         public DateTime StartDate { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date in the format dd/mm/yyyy hh:mm")]
+        [CompareTrainingDateValidationAttribute(OtherProperty = "StartDate", ErrorMessage = "End date must be after start date")]
         public DateTime EndDate { get; set; }
 
         [Required]
@@ -24,10 +29,7 @@
         [Required]
         public double Calories { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
-
-        [Required(ErrorMessage ="You must add a track.")]
-        public int TrackId { get; set; }
+        [Required(ErrorMessage = "You must add a track.")]
+        public TrackCreateViewModel Track { get; set; }
     }
 }

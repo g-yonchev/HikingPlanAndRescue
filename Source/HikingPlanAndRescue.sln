@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Web.Rou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Web.Controllers.Tests", "Tests\HikingPlanAndRescue.Web.Controllers.Tests\HikingPlanAndRescue.Web.Controllers.Tests.csproj", "{7C55353F-CB74-4E8E-B272-42DA1C9C2194}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Services.Predictions", "Services\HikingPlanAndRescue.Services.Predictions\HikingPlanAndRescue.Services.Predictions.csproj", "{90041E74-F01D-4AB3-9028-176C120D78FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{7C55353F-CB74-4E8E-B272-42DA1C9C2194}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C55353F-CB74-4E8E-B272-42DA1C9C2194}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C55353F-CB74-4E8E-B272-42DA1C9C2194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90041E74-F01D-4AB3-9028-176C120D78FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90041E74-F01D-4AB3-9028-176C120D78FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90041E74-F01D-4AB3-9028-176C120D78FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90041E74-F01D-4AB3-9028-176C120D78FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{D0D962BD-363D-4A22-9DB1-53136CE8EBF4} = {0C12FAF3-85BC-43E1-ABB2-6799213942CB}
 		{C3A300EF-D136-4334-9211-466B9E699339} = {0C12FAF3-85BC-43E1-ABB2-6799213942CB}
 		{7C55353F-CB74-4E8E-B272-42DA1C9C2194} = {0C12FAF3-85BC-43E1-ABB2-6799213942CB}
+		{90041E74-F01D-4AB3-9028-176C120D78FD} = {A5398FDD-2BE7-452F-9808-E5D3C5B58CC3}
 	EndGlobalSection
 EndGlobal

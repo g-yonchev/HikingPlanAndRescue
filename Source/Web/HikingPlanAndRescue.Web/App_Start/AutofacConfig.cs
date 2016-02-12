@@ -13,6 +13,7 @@
     using Data.Common;
 
     using Services.Data;
+    using Services.Predictions;
     using Services.Web;
 
     public static class AutofacConfig
@@ -59,6 +60,9 @@
 
             var servicesAssembly = Assembly.GetAssembly(typeof(ITrainingsService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+
+            var predictionsServiceAssembly = Assembly.GetAssembly(typeof(ITrainingPrediction));
+            builder.RegisterAssemblyTypes(predictionsServiceAssembly).AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))

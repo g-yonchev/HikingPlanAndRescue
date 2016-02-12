@@ -1,7 +1,8 @@
-﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListViewModel>
+﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListItemViewModel>
 
 @foreach (var training in Model)
 {
-    <h3>@training.Title</h3>
-        <p>Length: @training.TrackTitle (@training.TrackLength km)</p>
+    <div class="col-md-3 list-group-item">
+        @Html.Partial("_TrainingListItem", training)
+    </div>
 }

@@ -1,0 +1,1 @@
+Coursera.com -> Machine Learning (Stanford University)

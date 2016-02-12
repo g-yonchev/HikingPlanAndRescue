@@ -8,6 +8,7 @@
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        //"~/Scripts/kendo/jquery.min.js",
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js"));
 
@@ -26,6 +27,15 @@
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo").Include(
+                        "~/Content/kendo/kendo.common.min.css",
+                        "~/Content/kendo/kendo.common-bootstrap.min.css",
+                        "~/Content/kendo/kendo.default.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                        "~/Scripts/kendo/kendo.all.min.js",
+                        "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
         }
     }
 }

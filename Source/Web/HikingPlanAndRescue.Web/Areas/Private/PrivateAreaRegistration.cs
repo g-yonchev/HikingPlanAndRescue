@@ -1,7 +1,7 @@
 ﻿namespace HikingPlanAndRescue.Web.Areas.Private
 {
     using System.Web.Mvc;
-    using Constraints;
+    using Infrastructure.Constraints;
 
     public class PrivateAreaRegistration : AreaRegistration
     {

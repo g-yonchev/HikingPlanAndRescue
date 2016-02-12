@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListViewModel>
+﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListItemViewModel>
 
 @{
     ViewBag.Title = "My Trainings";
@@ -6,20 +6,19 @@
 }
 
 <p>
-    @Html.ActionLink("Create", "create", "trainings", null, new { @class="btn btn-lg"})
+    @Html.ActionLink("Create", "create", "trainings", null, new { @class="btn btn-primary btn-lg"})
 </p>
 
 <h2>My Trainings</h2>
 
-<div id="trainings-list">
-    @Html.Partial("_TrainingsList")
+<div id="trainings-list" class="row container">
+    @Html.Partial("_TrainingsList", Model)
 </div>
 
-<div id="loading" style="display: none">Loading...</div>
+<div class="row" id="loading" style="display: none">Loading...</div>
 
-@*<button id="btn-load-more-trainings" class="btn btn-lg">Load more...</button>*@
-
-@Ajax.ActionLink("Load Next...", "AjaxLoadNextTrainings", new { area = "private", page= 0 },
+<div class="row container">
+    @Ajax.ActionLink("Load Next...", "AjaxLoadNextTrainings", new { area = "private", page = 0 },
     new AjaxOptions
     {
         UpdateTargetId = "trainings-list",
@@ -27,7 +26,8 @@
         HttpMethod = "GET",
         InsertionMode = InsertionMode.InsertAfter,
         OnSuccess = "onLoadMoreTrainingsSuccess",
-    }, new { @class = "btn btn-primary", id= "loadMoreTrainings" })
+    }, new { @class = "btn btn-info btn-lg btn-block", id = "loadMoreTrainings" })
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
