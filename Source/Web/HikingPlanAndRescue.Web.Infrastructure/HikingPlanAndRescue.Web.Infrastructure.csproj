@@ -87,6 +87,7 @@
     <Compile Include="Constraints\AuthenticationRouteConstraint.cs" />
     <Compile Include="Mapping\AutoMapperConfig.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
+    <Compile Include="Mapping\IMap{T}.cs" />
     <Compile Include="Mapping\IMapFrom{T}.cs" />
     <Compile Include="Mapping\IMapTo{T}.cs" />
     <Compile Include="Mapping\QueryableExtensions.cs" />

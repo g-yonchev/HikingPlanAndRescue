@@ -6,7 +6,7 @@
     using Infrastructure.Mapping;
     using Infrastructure.Validation;
 
-    public class TrainingCreateViewModel : IMapTo<Training>, IMapFrom<Training>
+    public class TrainingCreateViewModel : IMap<Training>
     {
         [Required]
         public string UserId { get; set; }

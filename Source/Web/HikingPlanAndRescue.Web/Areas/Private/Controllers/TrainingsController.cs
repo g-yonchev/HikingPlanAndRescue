@@ -53,10 +53,11 @@
 
         public ActionResult Create()
         {
+            var date = DateTime.Now;
             var testTraining = new TrainingCreateViewModel()
             {
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now + new TimeSpan(5, 0, 0),
+                StartDate = date,
+                EndDate = date.AddHours(5),
                 Title = "Test training 1",
             };
 

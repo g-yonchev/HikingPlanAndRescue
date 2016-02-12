@@ -7,7 +7,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class TrackCreateViewModel : IMapTo<Track>
+    public class TrackCreateViewModel : IMap<Track>
     {
         [Display(Name = "Track title")]
         public string Title { get; set; }

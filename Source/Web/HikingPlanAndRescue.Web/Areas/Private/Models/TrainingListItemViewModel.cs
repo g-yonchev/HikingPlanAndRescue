@@ -7,7 +7,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class TrainingListItemViewModel : IMapFrom<Training>, IHaveCustomMappings
+    public class TrainingListItemViewModel : IMap<Training>, IHaveCustomMappings
     {
         public string Title { get; set; }
 

@@ -44,7 +44,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Water, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Water, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Water, new { htmlAttributes = new { @class = "form-control", id="water" } })
                     @Html.ValidationMessageFor(model => model.Water, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Calories, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Calories, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Calories, new { htmlAttributes = new { @class = "form-control", id="calories"} })
                     @Html.ValidationMessageFor(model => model.Calories, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -96,6 +96,7 @@
 
         </fieldset>
 
+
         <div class="form-group">
             <div class="col-md-10">
                 <input type="submit" value="Create" class="btn btn-success" />
@@ -111,6 +112,7 @@
     <button id="predict-btn" class="btn btn-info">
         Predict water and calories
     </button>
+    <span id="predicting" style="display:none" class="alert alert-info">PREDICTING...</span>
 </div>
 
 @section Scripts {
@@ -120,9 +122,12 @@
         $(document).ready(function () {
             var predictBtn = jQuery('#predict-btn');
             predictBtn.on('click', function () {
+                $('#predicting').show();
                 var formData = $('form').serialize();
                 $.post("/Private/Trainings/Predict", formData, function (data) {
-                    console.log(data);
+                    $('#calories').val(data.Calories);
+                    $('#water').val(data.Water);
+                    $('#predicting').hide();
                 });
                 //$('form').attr('action', '/Private/Trainings/Predict');
                 //$('form').submit();
