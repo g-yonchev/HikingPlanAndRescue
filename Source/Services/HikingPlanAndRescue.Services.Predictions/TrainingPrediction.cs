@@ -18,7 +18,7 @@ namespace HikingPlanAndRescue.Services.Predictions
             this.trainings = trainings;
         }
 
-        public Training PredictCaloriesAndWater(Training training)
+        public Training Predict(Training training)
         {
             var inputDataSet = new double[1000][];
             var outputDataSet = new double[1000][];
@@ -32,10 +32,8 @@ namespace HikingPlanAndRescue.Services.Predictions
             int i = 0;
             foreach (var dataSetTraining in dataSet)
             {
-                var duration = dataSetTraining.EndDate - dataSetTraining.StartDate;
                 var inputDataRow = new double[]
                 {
-                    duration.TotalHours,
                     dataSetTraining.Track.Length,
                     dataSetTraining.Track.Ascent,
                     dataSetTraining.Track.AscentLength,
@@ -43,10 +41,12 @@ namespace HikingPlanAndRescue.Services.Predictions
 
                 inputDataSet[i] = inputDataRow;
 
+                var duration = dataSetTraining.EndDate - dataSetTraining.StartDate;
                 var outputDataRow = new double[]
                 {
                     dataSetTraining.Calories,
-                    dataSetTraining.Water
+                    dataSetTraining.Water,
+                    duration.TotalHours
                 };
 
                 outputDataSet[i] = outputDataRow;
@@ -54,13 +54,12 @@ namespace HikingPlanAndRescue.Services.Predictions
                 i++;
             }
 
-            var regression = new MultivariateLinearRegression(4, 2);
+            var regression = new MultivariateLinearRegression(3, 3);
             double error = regression.Regress(inputDataSet, outputDataSet);
 
             var trainingDuration = training.EndDate - training.StartDate;
             var input = new double[]
                 {
-                    trainingDuration.TotalHours,
                     training.Track.Length,
                     training.Track.Ascent,
                     training.Track.AscentLength,
@@ -70,6 +69,7 @@ namespace HikingPlanAndRescue.Services.Predictions
 
             training.Calories = result[0];
             training.Water = result[1];
+            training.EndDate = training.StartDate.AddHours(result[2]);
 
             return training;
         }

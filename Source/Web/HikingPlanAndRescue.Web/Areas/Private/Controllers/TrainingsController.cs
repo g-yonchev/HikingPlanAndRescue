@@ -93,7 +93,7 @@
         }
 
         [HttpPost]
-        public ActionResult AjaxPredict(TrainingCreateViewModel model)
+        public ActionResult AjaxPredict(TrainingAjaxPredictViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -101,8 +101,8 @@
             }
 
             var training = this.Mapper.Map<Training>(model);
-            var predictedTraining = this.trainingPredictions.PredictCaloriesAndWater(training);
-            var predictedTrainingViewModel = this.Mapper.Map<TrainingCreateViewModel>(predictedTraining);
+            var predictedTraining = this.trainingPredictions.Predict(training);
+            var predictedTrainingViewModel = this.Mapper.Map<TrainingAjaxPredictViewModel>(predictedTraining);
 
             return this.Json(predictedTrainingViewModel);
         }

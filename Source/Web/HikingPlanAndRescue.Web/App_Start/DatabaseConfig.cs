@@ -17,8 +17,8 @@
         {
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
 
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
-            Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
 
             ApplicationDbContext.Create().Database.Initialize(true);
 

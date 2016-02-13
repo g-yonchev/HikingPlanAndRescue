@@ -6,6 +6,6 @@
     using Data.Models;
     public interface ITrainingPrediction
     {
-        Training PredictCaloriesAndWater(Training training);
+        Training Predict(Training training);
     }
 }

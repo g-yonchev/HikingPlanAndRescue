@@ -203,8 +203,10 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Private\Controllers\TrainingsController.cs" />
+    <Compile Include="Areas\Private\Models\TrackAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\TrackCreateViewModel.cs" />
     <Compile Include="Areas\Private\Models\TrackListViewModel.cs" />
+    <Compile Include="Areas\Private\Models\TrainingAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\TrainingCreateViewModel.cs" />
     <Compile Include="Areas\Private\Models\TrainingListItemViewModel.cs" />
     <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
