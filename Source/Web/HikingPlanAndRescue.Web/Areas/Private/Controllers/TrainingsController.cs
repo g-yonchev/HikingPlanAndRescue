@@ -17,7 +17,7 @@
     {
         private ITrainingsService trainings;
         private ITrainingPrediction trainingPredictions;
-        private const int PageSize = 16;
+        private const int PageSize = 15;
 
         public TrainingsController(ITrainingsService trainings, ITrainingPrediction trainingPredictions)
         {
@@ -44,7 +44,7 @@
                 return this.Content("This action can be invoke only by AJAX call");
             }
 
-            Thread.Sleep(3111);
+            Thread.Sleep(1500);
 
             var trainings = this.trainings
                 .GetByUser(this.User.Identity.GetUserId(), page, pageSize)
@@ -93,7 +93,7 @@
         }
 
         [HttpPost]
-        public ActionResult Predict(TrainingCreateViewModel model)
+        public ActionResult AjaxPredict(TrainingCreateViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -105,6 +105,14 @@
             var predictedTrainingViewModel = this.Mapper.Map<TrainingCreateViewModel>(predictedTraining);
 
             return this.Json(predictedTrainingViewModel);
+        }
+
+        public ActionResult AjaxWatch(int trainingId, string command)
+        {
+            var userId = this.User.Identity.GetUserId();
+            var updatedTraining = this.trainings.UpdateWatch(trainingId, command, userId);
+            var updatedTrainingViewModel = this.Mapper.Map<TrainingListItemViewModel>(updatedTraining);
+            return this.PartialView("_TrainingListItem", updatedTrainingViewModel);
         }
     }
 }

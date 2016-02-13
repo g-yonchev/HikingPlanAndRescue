@@ -1,0 +1,22 @@
+﻿
+@Ajax.ActionLink(
+    (string)ViewBag.Text,
+    "AjaxWatch",
+    new
+    {
+        area = "private",
+        TrainingId = ViewBag.TrainingId,
+        Command = ViewBag.Command
+    },
+    new AjaxOptions
+    {
+        HttpMethod = "GET",
+        OnSuccess = "onWatchSuccess",
+        UpdateTargetId = ViewBag.TrainingId.ToString(),
+        InsertionMode = InsertionMode.Replace
+    },
+    new
+    {
+        @class = "btn btn-success",
+        id = "btnWatch"
+    })

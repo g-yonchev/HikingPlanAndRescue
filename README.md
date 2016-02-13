@@ -1,5 +1,21 @@
 # Hiking Plan and Rescue Service
 
+## Brainstorm ideas
+
+- predict training duration (estimated completion time)
+- predict buddies with similar
+- routes can be listed and rated
+- cache regression models for users
+- automatically add weather conditions for training (some remote service)
+
+## Requirements
+
+- unit testing
+- special html chars handling
+- host the app in Azure
+- 15 controllers
+- 40 actions
+
 ## Database:
 
 - User

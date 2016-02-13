@@ -9,11 +9,19 @@
 
     public class TrainingListItemViewModel : IMap<Training>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
+        public DateTime? CheckedInOn { get; set; }
+
+        public DateTime? CheckedOutOn { get; set; }
+
         public string Title { get; set; }
 
         public string TrackTitle { get; set; }
 
         public double TrackLength { get; set; }
+
+        public DateTime StartDate { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

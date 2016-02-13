@@ -1,8 +1,27 @@
 ﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListItemViewModel>
 
+@section Styles {
+    @*<style>
+        #trainingItemBox {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+        }
+    </style>*@
+}
+
+@{ int i = 1;}
+
 @foreach (var training in Model)
 {
-    <div class="col-md-3 list-group-item">
+    <div id="@training.Id.ToString()" class="col-md-4">
         @Html.Partial("_TrainingListItem", training)
     </div>
+
+    if (i%3 == 0)
+    {
+        <div class="clearfix"></div>
+    }
+
+    i++;
 }

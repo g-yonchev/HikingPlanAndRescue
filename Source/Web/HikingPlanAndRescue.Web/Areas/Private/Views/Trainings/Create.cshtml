@@ -141,7 +141,7 @@
             predictBtn.on('click', function () {
                 $('#predicting').show();
                 var formData = $('form').serialize();
-                $.post("/Private/Trainings/Predict", formData, function (data) {
+                $.post("/Private/Trainings/AjaxPredict", formData, function (data) {
                     console.log(data);
                     if (data === "" || !data) {
                         $('#predicting').hide();

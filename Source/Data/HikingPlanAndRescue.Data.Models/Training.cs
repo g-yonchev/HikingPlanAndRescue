@@ -11,6 +11,10 @@
         {
         }
 
+        public DateTime? CheckedInOn { get; set; }
+
+        public DateTime? CheckedOutOn { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }

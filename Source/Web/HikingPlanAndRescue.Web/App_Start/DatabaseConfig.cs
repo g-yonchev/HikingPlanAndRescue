@@ -16,8 +16,10 @@
         public static void Config()
         {
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
+
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
+
             ApplicationDbContext.Create().Database.Initialize(true);
 
             Seed();
@@ -48,8 +50,8 @@
                     Calories = rand.Next(700, 3500),
                     Water = 0.5 + (rand.NextDouble() * 3),
                     User = user,
-                    StartDate = DateTime.UtcNow,
-                    EndDate = DateTime.UtcNow + new TimeSpan(rand.Next(3, 12), 0, 0),
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now + new TimeSpan(rand.Next(3, 12), 0, 0),
                 };
 
                 var ascentLen = 5 + (rand.NextDouble() * 30);

@@ -30,5 +30,34 @@
                 .Skip(page * pageSize)
                 .Take(pageSize);
         }
+
+        public Training UpdateWatch(int trainingId, string command, string userId)
+        {
+            var training = this.trainings.All().FirstOrDefault(x => x.Id == trainingId);
+            if (training == null)
+            {
+                return null;
+            }
+            else if (training.UserId != userId)
+            {
+                return null;
+            }
+            else if (command == "checkin")
+            {
+                training.CheckedInOn = DateTime.Now;
+            }
+            else if (command == "checkout")
+            {
+                training.CheckedOutOn = DateTime.Now;
+            }
+            else if (command == "reset")
+            {
+                training.CheckedInOn = null;
+                training.CheckedOutOn = null;
+            }
+
+            this.trainings.Save();
+            return training;
+        }
     }
 }
