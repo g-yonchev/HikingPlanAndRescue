@@ -1,0 +1,13 @@
+﻿<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        My Stuff <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            @Html.ActionLink("My trainings", "Index", "Trainings", new { area = "private" }, null)
+        </li>
+        <li>
+            @Html.ActionLink("Add training", "create", "trainings", new { area = "private" }, null)
+        </li>
+    </ul>
+</li>

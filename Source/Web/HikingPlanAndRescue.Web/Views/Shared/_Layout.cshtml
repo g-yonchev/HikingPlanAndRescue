@@ -15,7 +15,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,14 +29,16 @@
                 <ul class="nav navbar-nav">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("My trainings", "Index", "Trainings", new { area = "private" }, null)</li>
+                        @Html.Partial("_MyStuff")
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Admin", "Index", "Users", new { area = "admin" }, null)</li>
+                        @Html.Partial("_Admin")
                     }
                 </ul>
+
                 @Html.Partial("_LoginPartial")
+
             </div>
         </div>
     </div>
