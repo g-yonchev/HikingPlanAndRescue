@@ -2,8 +2,7 @@
 
 ## Todos
 
-- list user\`s routes
-- at home page list checked-in trainings ordered by most overdue to checkout
+- list user\`s tracks
 - add file (kml or gpx) for track
 - parse track parameters from file
 - list top rated tracks and download files
