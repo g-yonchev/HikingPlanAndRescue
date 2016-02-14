@@ -10,7 +10,7 @@
 
         public ActionResult Index()
         {
-            return this.View();
+            return this.Redirect("/");
         }
     }
 }

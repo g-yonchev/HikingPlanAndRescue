@@ -27,7 +27,7 @@
 
         public static void Config()
         {
-            var dbReset = false;
+            var dbReset = true;
             if (dbReset)
             {
                 Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
@@ -56,6 +56,11 @@
 
         private static void SeedCheckedInTrainings(ApplicationDbContext context)
         {
+            if (context.Trainings.Any(x => x.CheckedInOn != null && x.CheckedOutOn == null))
+            {
+                return;
+            }
+
             var users = context.Users.Select(x => x.Id).ToList();
             int i = 0;
             var rand = new Random();
