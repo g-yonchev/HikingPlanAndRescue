@@ -46,7 +46,7 @@
                 return this.Content("This action can be invoke only by AJAX call");
             }
 
-            Thread.Sleep(1500);
+            Thread.Sleep(1000);
 
             var trainings = this.trainings
                 .GetByUser(this.User.Identity.GetUserId(), page, pageSize)

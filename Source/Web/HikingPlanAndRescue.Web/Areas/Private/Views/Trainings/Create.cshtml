@@ -115,22 +115,7 @@
     <span id="predicting" style="display:none" class="alert alert-info">PREDICTING...</span>
 </div>
 
-<div class="modal fade" id="error-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Error</h4>
-            </div>
-            <div class="modal-body">
-                <p>Inconsistencies in model data detected. Perhaps start date is after end date or negative or non-numeric input for lengths?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+@Html.Partial("_Modal")
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -146,7 +131,9 @@
                     console.log(data);
                     if (data === "" || !data) {
                         $('#predicting').hide();
-                        $('#error-modal').modal();
+                        $('#modalTitle').html('Error');
+                        $('#modalMessage').html('Couldn`t predict, check your input. Perhaps EndDate before StartDate?');
+                        $('#modal').modal();
                         return;
                     }
 
