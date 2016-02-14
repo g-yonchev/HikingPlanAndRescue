@@ -207,7 +207,9 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\Models\Trainings\TrainingViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
     <Compile Include="Areas\Private\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackAjaxPredictViewModel.cs" />
@@ -283,6 +285,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Grid.mvc.readme" />
+    <Content Include="Areas\Admin\Views\Trainings\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

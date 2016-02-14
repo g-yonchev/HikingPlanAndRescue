@@ -39,6 +39,11 @@
             this.trainings.Save();
         }
 
+        public IQueryable<Training> GetAll()
+        {
+            return this.trainings.All().OrderBy(x => x.Id);
+        }
+
         public Training GetById(int id)
         {
             return this.trainings.GetById(id);

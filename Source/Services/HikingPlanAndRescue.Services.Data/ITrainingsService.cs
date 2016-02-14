@@ -18,5 +18,6 @@
         void Delete(int id, string userId);
 
         IQueryable<Training> GetCheckedIn(int page, int pageSize);
+        IQueryable<Training> GetAll();
     }
 }
