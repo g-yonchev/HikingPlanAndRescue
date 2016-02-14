@@ -89,7 +89,7 @@
         function onLoadMoreTrainingsSuccess(data) {
             console.log("This is the OnSuccessCallback: " + data);
             if (!data) {
-                loadMoreTrainingsBtn.disabled = true;
+                loadMoreTrainingsBtn.addClass('disabled');
                 loadMoreTrainingsBtn.text('No more');
             }
 
