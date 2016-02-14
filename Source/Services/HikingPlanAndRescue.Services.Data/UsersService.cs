@@ -9,6 +9,6 @@
 
     public class UsersService
     {
-        //private readonly IDbRepository<IdentityUser, string> trainings;
+        private readonly IDbRepository<ApplicationUser> trainings;
     }
 }
