@@ -16,6 +16,12 @@
             this.Trainings = new HashSet<Training>();
         }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string GSM { get; set; }
+
         public virtual ICollection<Track> Tracks { get; set; }
 
         public virtual ICollection<Training> Trainings { get; set; }

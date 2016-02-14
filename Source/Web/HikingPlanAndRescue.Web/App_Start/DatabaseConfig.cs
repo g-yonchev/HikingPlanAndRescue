@@ -1,7 +1,6 @@
 ﻿namespace HikingPlanAndRescue.Web
 {
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -13,6 +12,19 @@
 
     public class DatabaseConfig
     {
+        private static readonly string[] Names = new string[]
+        {
+            "Petkan",
+            "Dragan",
+            "Gosho",
+            "Momchil",
+            "Viara",
+            "Nadejda",
+            "Liubov",
+            "Angel",
+            "Adrian"
+        };
+
         public static void Config()
         {
             var dbReset = false;
@@ -60,7 +72,7 @@
                     StartDate = randomDate,
                     EndDate = randomDate + new TimeSpan(rand.Next(3, 12), 0, 0),
                     CheckedInOn = randomDate.AddHours(-1),
-                    TrackId = i+1
+                    TrackId = i + 1
                 };
 
                 i++;
@@ -145,7 +157,10 @@
                         UserName = $"u{i}@site.com",
                         Email = $"u{i}@site.com",
                         PasswordHash = new PasswordHasher().HashPassword($"u{i}"),
-                        SecurityStamp = Guid.NewGuid().ToString()
+                        SecurityStamp = Guid.NewGuid().ToString(),
+                        FirstName = Names[random.Next(0, Names.Length)],
+                        LastName = Names[random.Next(0, Names.Length)],
+                        GSM = random.Next(100000000, 999999999).ToString(),
                     };
 
                     context.Users.AddOrUpdate(user);

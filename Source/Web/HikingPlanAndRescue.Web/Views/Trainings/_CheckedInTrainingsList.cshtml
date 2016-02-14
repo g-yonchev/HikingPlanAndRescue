@@ -3,8 +3,10 @@
 @foreach (var tr in Model)
 {
     <div class="list-group-item">
+
         <h2 class="lead">
-            <strong> @tr.User.UserName </strong>
+            <strong> @tr.User.FirstName @tr.User.LastName</strong>
+
             @if (tr.EndDate < DateTime.Now.AddHours(-5))
             {
                 <span class="label label-danger">WAY OVERDUE!</span>
@@ -22,9 +24,6 @@
                 <span class="label label-default">Not started.</span>
             }
         </h2>
-        <p>
-            <strong>Track Title:</strong> @tr.Track.Title
-        </p>
 
         @if (tr.EndDate < DateTime.Now.AddHours(-5))
         {
@@ -44,6 +43,14 @@
                 <strong>Due to Check-Out: </strong>@tr.EndDate
             </p>
         }
+
+        <p class="text-primary">
+            Contact: <strong>@tr.User.GSM </strong>
+        </p>
+
+        <p>
+            <strong>Track Title:</strong> @tr.Track.Title
+        </p>
 
         <p class="text-muted small">
             Checked-In on: <strong>@tr.CheckedInOn </strong>
