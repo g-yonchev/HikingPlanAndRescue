@@ -5,6 +5,7 @@
     using System.Linq;
     using HikingPlanAndRescue.Data.Common;
     using HikingPlanAndRescue.Data.Models;
+    using HikingPlanAndRescue.Web.Infrastructure.CustomExceptions;
 
     public class TrainingsService : ITrainingsService
     {
@@ -21,14 +22,41 @@
             this.trainings.Save();
         }
 
+        public void Delete(int id, string userId)
+        {
+            var training = this.trainings.GetById(id);
+            if (training == null)
+            {
+                throw new CustomServiceOperationException("No such training found.");
+            }
+
+            if (training.UserId != userId)
+            {
+                throw new CustomServiceOperationException("Cannot delete trainings you do not own.");
+            }
+
+            this.trainings.Delete(training);
+            this.trainings.Save();
+        }
+
+        public Training GetById(int id)
+        {
+            return this.trainings.GetById(id);
+        }
+
         public IQueryable<Training> GetByUser(string userId, int page = 0, int pageSize = 10)
         {
             return this.trainings
                 .All()
                 .Where(x => x.UserId == userId)
-                .OrderByDescending(x => x.CreatedOn)
+                .OrderByDescending(x => x.EndDate)
                 .Skip(page * pageSize)
                 .Take(pageSize);
+        }
+
+        public void Update()
+        {
+            this.trainings.Save();
         }
 
         public Training UpdateWatch(int trainingId, string command, string userId)
@@ -44,16 +72,28 @@
             }
             else if (command == "checkin")
             {
+                if (this.trainings.All()
+                    .Any(
+                    x => x.CheckedInOn != null 
+                    && x.CheckedOutOn == null
+                    && x.UserId == userId))
+                {
+                    throw new CustomServiceOperationException("Cannot Check In more than one training at a time.");
+                }
+
                 training.CheckedInOn = DateTime.Now;
             }
             else if (command == "checkout")
             {
                 training.CheckedOutOn = DateTime.Now;
+                training.PredictedEndDate = training.EndDate;
+                training.EndDate = DateTime.Now;
             }
             else if (command == "reset")
             {
                 training.CheckedInOn = null;
                 training.CheckedOutOn = null;
+                training.EndDate = training.PredictedEndDate.Value;
             }
 
             this.trainings.Save();

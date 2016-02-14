@@ -5,6 +5,8 @@
     ViewBag.Page = 0;
 }
 
+<div id="ajaxMessage" class="alert alert-info hide"></div>
+
 <p>
     @Html.ActionLink("Add", "create", "trainings", null, new { @class = "btn btn-primary btn-lg" })
 </p>
@@ -36,6 +38,9 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         var nextPage = 1;
+        var ajaxMessage = $('#ajaxMessage');
+        ajaxMessage.hide();
+
         var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
         loadMoreTrainingsBtn.on('click', function () {
             console.log(nextPage);
@@ -61,6 +66,20 @@
 
         function onWatchSuccess(data) {
             console.log(data);
+            if (data.error) {
+                ajaxMessage.html(data.error);
+                ajaxMessage.show(1000);
+                setTimeout(function () {
+                    ajaxMessage.html("");
+                    ajaxMessage.hide(1000);
+                }, 3000);
+            }
+
+            $('#' + data.id).html(data.data);
+
+            //if (data.CheckedOutOn) {
+            //    window.location.href = '/private/trainings/edit/' + data.Id;
+            //}
         }
 
     </script>

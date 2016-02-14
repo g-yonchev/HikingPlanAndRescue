@@ -19,6 +19,8 @@
 
         public DateTime EndDate { get; set; }
 
+        public DateTime? PredictedEndDate { get; set; }
+
         public string Title { get; set; }
 
         public double Water { get; set; }

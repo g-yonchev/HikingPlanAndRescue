@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Binders\DoubleModelBinder.cs" />
     <Compile Include="Constraints\AuthenticationRouteConstraint.cs" />
+    <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Mapping\AutoMapperConfig.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMap{T}.cs" />

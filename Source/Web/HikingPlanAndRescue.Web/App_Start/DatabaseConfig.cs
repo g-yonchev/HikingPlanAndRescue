@@ -15,10 +15,15 @@
     {
         public static void Config()
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
-
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            var dbToggle = false;
+            if (dbToggle)
+            {
+                Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            }
+            else
+            {
+                Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            }
 
             ApplicationDbContext.Create().Database.Initialize(true);
 
@@ -44,14 +49,15 @@
             for (int i = 0; i < 1000; i++)
             {
                 var user = context.Users.OrderBy(x => Guid.NewGuid()).First();
+                var randomDate = DateTime.Now.AddHours(rand.Next(50, 150) * (-1));
                 var training = new Training()
                 {
                     Title = $"Training{i}",
                     Calories = rand.Next(700, 3500),
                     Water = 0.5 + (rand.NextDouble() * 3),
                     User = user,
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now + new TimeSpan(rand.Next(3, 12), 0, 0),
+                    StartDate = randomDate,
+                    EndDate = randomDate + new TimeSpan(rand.Next(3, 12), 0, 0),
                 };
 
                 var ascentLen = 5 + (rand.NextDouble() * 30);

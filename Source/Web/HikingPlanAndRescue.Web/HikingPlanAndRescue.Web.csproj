@@ -208,6 +208,7 @@
     <Compile Include="Areas\Private\Models\TrackListViewModel.cs" />
     <Compile Include="Areas\Private\Models\TrainingAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\TrainingCreateViewModel.cs" />
+    <Compile Include="Areas\Private\Models\TrainingEditViewModel.cs" />
     <Compile Include="Areas\Private\Models\TrainingListItemViewModel.cs" />
     <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -265,6 +266,7 @@
     <Content Include="Areas\Private\Views\Trainings\_TrainingListItem.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_WatchBtn.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_TrainingsList.cshtml" />
+    <Content Include="Areas\Private\Views\Trainings\Edit.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -313,6 +315,7 @@
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Double.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +337,10 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\common\HikingPlanAndRescue.Common\HikingPlanAndRescue.Common.csproj">
+      <Project>{b455822a-1fa8-4d96-835e-5095bfe4b490}</Project>
+      <Name>HikingPlanAndRescue.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\HikingPlanAndRescue.Data.Common\HikingPlanAndRescue.Data.Common.csproj">
       <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
       <Name>HikingPlanAndRescue.Data.Common</Name>

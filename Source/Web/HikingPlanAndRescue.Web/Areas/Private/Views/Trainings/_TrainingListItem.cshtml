@@ -1,7 +1,10 @@
 ﻿@model HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListItemViewModel
 
 <h3>@Model.Title</h3>
-<p class="info">@Html.DisplayFor(x => x.StartDate)</p>
+@if (Model.StartDate != null)
+{
+    <p class="info">@Html.DisplayFor(x => x.StartDate)</p>
+}
 <p class="lead">Track details:</p>
 <p>Title: @Html.DisplayFor(x => x.Title)</p>
 <p class="info">(Length: @Html.DisplayFor(x => x.TrackLength) km)</p>
@@ -10,7 +13,7 @@
     ViewBag.TrainingId = Model.Id;
 }
 
-@if (Model.StartDate > DateTime.Now && Model.CheckedInOn == null)
+@if (Model.EndDate > DateTime.Now && Model.CheckedInOn == null)
 {
     ViewBag.Command = "checkin";
     ViewBag.Text = "CheckIn";
@@ -32,8 +35,13 @@ else if (Model.CheckedInOn != null && Model.CheckedOutOn != null)
     <p>CheckedIn on: @Html.DisplayFor(x => x.CheckedInOn)</p>
     <p>CheckedOut on: @Html.DisplayFor(x => x.CheckedOutOn)</p>
     ViewBag.Command = "reset";
-    ViewBag.Text = "Cancel CheckOut";
+    ViewBag.Text = "Revert CheckIn-Out";
     @Html.Partial("_WatchBtn")
 }
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Del", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger" })
+</p>
 
 <hr />

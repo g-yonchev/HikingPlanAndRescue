@@ -138,6 +138,7 @@
     <script>
         $(document).ready(function () {
             var predictBtn = jQuery('#predict-btn');
+
             predictBtn.on('click', function () {
                 $('#predicting').show();
                 var formData = $('form').serialize();
@@ -164,9 +165,8 @@
 
                     $('#predicting').hide();
                 });
-                //$('form').attr('action', '/Private/Trainings/Predict');
-                //$('form').submit();
             });
+
         });
     </script>
 }

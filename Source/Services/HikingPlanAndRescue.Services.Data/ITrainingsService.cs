@@ -10,5 +10,10 @@
         void AddTraining(Training training);
 
         Training UpdateWatch(int trainingId, string watch, string userId);
+
+        Training GetById(int id);
+
+        void Update();
+        void Delete(int id, string userId);
     }
 }
