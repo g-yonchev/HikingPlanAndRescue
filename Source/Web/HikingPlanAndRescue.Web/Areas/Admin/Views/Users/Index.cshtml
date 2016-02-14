@@ -1,9 +1,23 @@
 ﻿@model IQueryable<HikingPlanAndRescue.Web.Areas.Admin.Models.Users.UserViewModel>
+@using GridMvc.Html
 
 @{
     ViewBag.Title = "Admin Users";
 }
 
+@section Styles {
+    @Styles.Render("~/Content/gridmvc")
+    }
+
 <h2>Users Administrator</h2>
 
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(foo => foo.FirstName).Titled("FirstName").SetWidth(110);
+    columns.Add(foo => foo.GSM).Sortable(true);
+}).WithPaging(3)
 
+
+@section Scripts{
+    @Scripts.Render("~/bundles/gridmvc")
+    }

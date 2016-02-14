@@ -18,7 +18,7 @@
 
         public IQueryable<ApplicationUser> GetAll()
         {
-            return this.users.All();
+            return this.users.All().OrderBy(x => x.Id);
         }
     }
 }

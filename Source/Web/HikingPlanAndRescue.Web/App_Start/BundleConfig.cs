@@ -37,6 +37,12 @@
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/kendo.all.min.js",
                         "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/gridmvc").Include(
+                        "~/Scripts/gridmvc.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/gridmvc").Include(
+                        "~/Content/Gridmvc.css"));
         }
     }
 }
