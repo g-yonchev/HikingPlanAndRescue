@@ -144,7 +144,10 @@
                     Email = "admin@site.com",
                     UserName = "admin@site.com",
                     PasswordHash = new PasswordHasher().HashPassword("admin"),
-                    SecurityStamp = Guid.NewGuid().ToString()
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    FirstName = "Pe6o admina",
+                    LastName = "Adminov",
+                    GSM = "99 999 999"
                 };
 
                 context.Users.AddOrUpdate(user);
@@ -165,7 +168,7 @@
                         SecurityStamp = Guid.NewGuid().ToString(),
                         FirstName = Names[random.Next(0, Names.Length)],
                         LastName = Names[random.Next(0, Names.Length)],
-                        GSM = random.Next(100000000, 999999999).ToString(),
+                        GSM = random.Next(100000000, 999999999).ToString()
                     };
 
                     context.Users.AddOrUpdate(user);
