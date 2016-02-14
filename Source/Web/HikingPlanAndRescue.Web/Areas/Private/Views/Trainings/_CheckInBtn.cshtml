@@ -1,4 +1,19 @@
-﻿
+﻿@{ 
+    string btnType = "";
+    if (ViewBag.Command == "checkin")
+    {
+        btnType = "btn btn-success";
+    }
+    else if (ViewBag.Command == "checkout")
+    {
+        btnType = "btn btn-warning";
+    }
+    else if (ViewBag.Command == "reset")
+    {
+        btnType = "btn btn-default";
+    }
+}
+
 @Ajax.ActionLink(
     (string)ViewBag.Text,
     "AjaxWatch",
@@ -17,6 +32,6 @@
     },
     new
     {
-        @class = "btn btn-success",
+        @class = btnType,
         id = "btnWatch"
     })

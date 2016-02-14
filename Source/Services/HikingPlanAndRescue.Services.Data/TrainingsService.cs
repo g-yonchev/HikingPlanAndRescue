@@ -54,6 +54,16 @@
                 .Take(pageSize);
         }
 
+        public IQueryable<Training> GetCheckedIn(int page, int pageSize)
+        {
+            return this.trainings
+                .All()
+                .Where(x => x.CheckedInOn != null && x.CheckedOutOn == null && x.EndDate >= DateTime.Now)
+                .OrderByDescending(x => x.EndDate)
+                .Skip(page * pageSize)
+                .Take(pageSize);
+        }
+
         public void Update()
         {
             this.trainings.Save();
@@ -74,7 +84,7 @@
             {
                 if (this.trainings.All()
                     .Any(
-                    x => x.CheckedInOn != null 
+                    x => x.CheckedInOn != null
                     && x.CheckedOutOn == null
                     && x.UserId == userId))
                 {
@@ -99,5 +109,7 @@
             this.trainings.Save();
             return training;
         }
+
+
     }
 }

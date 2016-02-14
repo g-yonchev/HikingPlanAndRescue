@@ -203,19 +203,20 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Private\Controllers\TrainingsController.cs" />
-    <Compile Include="Areas\Private\Models\TrackAjaxPredictViewModel.cs" />
-    <Compile Include="Areas\Private\Models\TrackCreateViewModel.cs" />
-    <Compile Include="Areas\Private\Models\TrackListViewModel.cs" />
-    <Compile Include="Areas\Private\Models\TrainingAjaxPredictViewModel.cs" />
-    <Compile Include="Areas\Private\Models\TrainingCreateViewModel.cs" />
-    <Compile Include="Areas\Private\Models\TrainingEditViewModel.cs" />
-    <Compile Include="Areas\Private\Models\TrainingListItemViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Tracks\TrackAjaxPredictViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Tracks\TrackCreateViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Tracks\TrackListViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Trainings\TrainingAjaxPredictViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Trainings\TrainingCreateViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Trainings\TrainingEditViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Trainings\TrainingListItemViewModel.cs" />
     <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\TrainingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,6 +239,9 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Tracks\TrackPublicViewModel.cs" />
+    <Compile Include="ViewModels\Trainings\TrainingCheckedInListItemViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserPublicViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -264,7 +268,7 @@
     <Content Include="Areas\Private\Views\Trainings\Index.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\Create.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_TrainingListItem.cshtml" />
-    <Content Include="Areas\Private\Views\Trainings\_WatchBtn.cshtml" />
+    <Content Include="Areas\Private\Views\Trainings\_CheckInBtn.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_TrainingsList.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\Edit.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
@@ -316,6 +320,8 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Double.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Trainings\Index.cshtml" />
+    <Content Include="Views\Trainings\_CheckedInTrainingsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

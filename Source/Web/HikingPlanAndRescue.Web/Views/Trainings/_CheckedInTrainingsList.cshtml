@@ -1,0 +1,32 @@
+﻿@model IEnumerable<HikingPlanAndRescue.Web.ViewModels.Trainings.TrainingCheckedInListItemViewModel>
+
+@foreach (var tr in Model)
+{
+    <div class="list-group-item">
+        <h2 class="lead">
+            <strong> @tr.User.UserName </strong>
+        </h2>
+        <p>
+            <strong>Track Title:</strong> @tr.Track.Title
+        </p>
+
+        @if (tr.EndDate < DateTime.Now)
+        {
+            <p class="lead text-danger">
+                <strong>Due to Check-Out: </strong>@tr.EndDate
+            </p>
+        }
+        else
+        {
+            <p class="text-warning">
+                <strong>Due to Check-Out: </strong>@tr.EndDate
+            </p>
+        }
+
+        <p class="text-muted small">
+            Checked-In on: <strong>@tr.CheckedInOn </strong>
+            <br />
+            Start time: <strong>@tr.StartDate</strong>
+        </p>
+    </div>
+}

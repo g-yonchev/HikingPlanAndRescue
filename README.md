@@ -1,12 +1,24 @@
 # Hiking Plan and Rescue Service
 
-## Brainstorm ideas
+## Todos
 
-- predict training duration (estimated completion time)
-- predict buddies with similar
+- list user\`s routes
+- at home page list checked-in trainings ordered by most overdue to checkout
+- add file (kml or gpx) for track
+- parse track parameters from file
+- list top rated tracks and download files
+- at user login home add warning for overdue checkout
+- suggest other tracks based on current preferences (length, location etc.)
+- show statistics for users trainings, total calories burned etc.
 - routes can be listed and rated
-- cache regression models for users
+- cache regression models for user trainings
 - automatically add weather conditions for training (some remote service)
+- add equipment items for training
+- administrator area with CRUD for users, trainings (MVC grid or Kendo UI Grid)
+- fix database creation modification times to be UTC
+- special html chars handling
+- unit testing
+- host the app in Azure
 
 ## Requirements
 

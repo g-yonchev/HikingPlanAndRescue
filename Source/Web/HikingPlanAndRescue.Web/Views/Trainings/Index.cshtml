@@ -1,0 +1,103 @@
+﻿@model IEnumerable<HikingPlanAndRescue.Web.ViewModels.Trainings.TrainingCheckedInListItemViewModel>
+
+@{
+    ViewBag.Title = "Checked-In Trainings";
+}
+
+@*<div class="row container">
+        <div class="well well-lg text-center">
+            <p class="lead">
+                <span class="text-info">Current date and time (UTC + 02:00): </span> @DateTime.Now
+            </p>
+        </div>
+    </div>*@
+
+<div class="text-center page-header">
+    <h1>
+        @ViewBag.Title
+        <br />
+        <small id="clock">
+        </small>
+    </h1>
+</div>
+
+<div id="trainings-list" class="row container">
+    @Html.Partial("_CheckedInTrainingsList", Model)
+</div>
+
+<div class="row container" id="loading" style="display: none">
+    <div class="alert alert-info text-center">Loading...</div>
+</div>
+
+<div class="row container">
+    @Ajax.ActionLink("Show More...", "AjaxLoadNextTrainings", new { area = "", page = 0 },
+    new AjaxOptions
+    {
+        UpdateTargetId = "trainings-list",
+        LoadingElementId = "loading",
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.InsertAfter,
+        OnSuccess = "onLoadMoreTrainingsSuccess",
+        OnBegin = "onLoadMoreTrainingsBegin"
+    }, new { @class = "btn btn-info btn-lg btn-block", id = "loadMoreTrainings" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function updateTime(){
+            var currentTime = new Date();
+            var day = currentTime.getDate();
+            var month = currentTime.getMonth() + 1;
+            var year = currentTime.getFullYear();
+
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var sec = currentTime.getSeconds();
+
+            if (minutes < 10){
+                minutes = "0" + minutes
+            }
+            if (sec < 10) {
+                sec = "0" + sec;
+            }
+            var t_str = day + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + sec + " ";
+
+            if(hours > 11){
+                t_str += "PM";
+            } else {
+                t_str += "AM";
+            }
+            t_str += " Local Time";
+            document.getElementById('clock').innerHTML = t_str;
+        }
+        setInterval(updateTime, 1000);
+    </script>
+
+    <script>
+        var nextPage = 1;
+
+        var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
+        loadMoreTrainingsBtn.on('click', function () {
+            console.log(nextPage);
+            var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
+            loadMoreTrainingsBtn.attr('href', hrefString);
+            nextPage++;
+        });
+
+        function onLoadMoreTrainingsSuccess(data) {
+            console.log("This is the OnSuccessCallback: " + data);
+            if (!data) {
+                loadMoreTrainingsBtn.disabled = true;
+                loadMoreTrainingsBtn.text('No more');
+            }
+
+            loadMoreTrainingsBtn.show();
+        }
+
+        function onLoadMoreTrainingsBegin() {
+            loadMoreTrainingsBtn.hide();
+        }
+    </script>
+}
