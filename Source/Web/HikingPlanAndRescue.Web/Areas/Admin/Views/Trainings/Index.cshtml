@@ -1,12 +1,8 @@
 ﻿@model IQueryable<HikingPlanAndRescue.Web.Areas.Admin.Models.Trainings.TrainingViewModel>
-@using GridMvc.Html
 
 @{
     ViewBag.Title = "Admin Trainings";
-}
-
-@section Styles {
-    @Styles.Render("~/Content/gridmvc")
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutGridMvc.cshtml";
 }
 
 <h2>Users Administrator</h2>
@@ -17,8 +13,3 @@
     columns.Add(foo => foo.StartDate).Sortable(true);
     columns.Add(foo => foo.User.FirstName).Sortable(true);
 }).WithPaging(3)
-
-
-@section Scripts{
-    @Scripts.Render("~/bundles/gridmvc")
-}

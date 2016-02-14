@@ -286,6 +286,7 @@
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Grid.mvc.readme" />
     <Content Include="Areas\Admin\Views\Trainings\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutGridMvc.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -345,7 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Private\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
   </ItemGroup>
