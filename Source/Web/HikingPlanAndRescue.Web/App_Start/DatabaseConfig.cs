@@ -27,7 +27,7 @@
 
         public static void Config()
         {
-            var dbReset = true;
+            var dbReset = false;
             if (dbReset)
             {
                 Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());

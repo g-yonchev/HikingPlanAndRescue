@@ -45,7 +45,7 @@
 
         var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
         loadMoreTrainingsBtn.on('click', function () {
-            console.log(nextPage);
+            //console.log(nextPage);
             var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
             console.log(hrefString);
             loadMoreTrainingsBtn.attr('href', hrefString);
@@ -53,10 +53,11 @@
         });
 
         function onLoadMoreTrainingsSuccess(data) {
-            console.log("This is the OnSuccessCallback: " + data);
-            if (!data) {
-                loadMoreTrainingsBtn.disabled = true;
+            //console.log("This is the OnSuccessCallback: " + data);
+            console.log(data);
+            if (data === null || data.trim() === '') {
                 loadMoreTrainingsBtn.text('No more');
+                loadMoreTrainingsBtn.addClass('disabled');
             }
 
             loadMoreTrainingsBtn.show();
