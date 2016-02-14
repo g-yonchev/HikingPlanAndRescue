@@ -15,6 +15,7 @@
         {
             this.Tracks = new HashSet<Track>();
             this.Trainings = new HashSet<Training>();
+            this.CreatedOn = DateTime.Now;
         }
 
         public string FirstName { get; set; }
