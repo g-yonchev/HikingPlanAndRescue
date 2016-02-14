@@ -5,27 +5,48 @@
     <div class="list-group-item">
         <h2 class="lead">
             <strong> @tr.User.UserName </strong>
+            @if (tr.EndDate < DateTime.Now.AddHours(-5))
+            {
+                <span class="label label-danger">WAY OVERDUE!</span>
+            }
+            else if (tr.EndDate < DateTime.Now.AddHours(-1))
+            {
+                <span class="label label-warning">OVERDUE!</span>
+            }
+            else if (tr.StartDate <= DateTime.Now)
+            {
+                <span class="label label-info">In progress...</span>
+            }
+            else if (tr.StartDate > DateTime.Now)
+            {
+                <span class="label label-default">Not started.</span>
+            }
         </h2>
         <p>
             <strong>Track Title:</strong> @tr.Track.Title
         </p>
 
-        @if (tr.EndDate < DateTime.Now)
+        @if (tr.EndDate < DateTime.Now.AddHours(-5))
         {
             <p class="lead text-danger">
                 <strong>Due to Check-Out: </strong>@tr.EndDate
             </p>
         }
-        else
+        else if (tr.EndDate < DateTime.Now.AddHours(-1))
         {
             <p class="text-warning">
+                <strong>Due to Check-Out: </strong>@tr.EndDate
+            </p>
+        }
+        else
+        {
+            <p class="text-info">
                 <strong>Due to Check-Out: </strong>@tr.EndDate
             </p>
         }
 
         <p class="text-muted small">
             Checked-In on: <strong>@tr.CheckedInOn </strong>
-            <br />
             Start time: <strong>@tr.StartDate</strong>
         </p>
     </div>

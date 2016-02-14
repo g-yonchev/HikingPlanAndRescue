@@ -13,9 +13,12 @@
         public ApplicationUser()
         {
             this.Tracks = new HashSet<Track>();
+            this.Trainings = new HashSet<Training>();
         }
 
         public virtual ICollection<Track> Tracks { get; set; }
+
+        public virtual ICollection<Training> Trainings { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

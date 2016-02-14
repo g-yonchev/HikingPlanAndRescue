@@ -58,8 +58,8 @@
         {
             return this.trainings
                 .All()
-                .Where(x => x.CheckedInOn != null && x.CheckedOutOn == null && x.EndDate >= DateTime.Now)
-                .OrderByDescending(x => x.EndDate)
+                .Where(x => x.CheckedInOn != null && x.CheckedOutOn == null)
+                .OrderBy(x => x.EndDate)
                 .Skip(page * pageSize)
                 .Take(pageSize);
         }
