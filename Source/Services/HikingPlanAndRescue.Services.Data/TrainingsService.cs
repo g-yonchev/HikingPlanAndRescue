@@ -10,10 +10,12 @@
     public class TrainingsService : ITrainingsService
     {
         private readonly IDbRepository<Training> trainings;
+        private IDbRepository<ApplicationUser> users;
 
-        public TrainingsService(IDbRepository<Training> trainings)
+        public TrainingsService(IDbRepository<Training> trainings, IDbRepository<ApplicationUser> users)
         {
             this.trainings = trainings;
+            this.users = users;
         }
 
         public void AddTraining(Training training)
@@ -22,15 +24,16 @@
             this.trainings.Save();
         }
 
-        public void Delete(int id, string userId)
+        public void Delete(int id, string userId, bool isAdmin)
         {
+            var user = this.users.GetById(userId);
             var training = this.trainings.GetById(id);
             if (training == null)
             {
                 throw new CustomServiceOperationException("No such training found.");
             }
 
-            if (training.UserId != userId)
+            if (training.UserId != userId && !isAdmin)
             {
                 throw new CustomServiceOperationException("Cannot delete trainings you do not own.");
             }

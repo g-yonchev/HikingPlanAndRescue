@@ -15,9 +15,10 @@
 
         void Update();
 
-        void Delete(int id, string userId);
+        void Delete(int id, string userId, bool isAdmin);
 
         IQueryable<Training> GetCheckedIn(int page, int pageSize);
+
         IQueryable<Training> GetAll();
     }
 }

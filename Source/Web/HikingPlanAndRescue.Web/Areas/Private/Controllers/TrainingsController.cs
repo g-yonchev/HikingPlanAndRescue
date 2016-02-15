@@ -173,7 +173,7 @@
             var userId = this.User.Identity.GetUserId();
             try
             {
-                this.trainings.Delete(id, userId);
+                this.trainings.Delete(id, userId, false);
             }
             catch (CustomServiceOperationException e)
             {

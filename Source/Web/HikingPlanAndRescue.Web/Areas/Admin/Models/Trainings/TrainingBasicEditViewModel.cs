@@ -3,9 +3,8 @@
     using System;
     using Data.Models;
     using Infrastructure.Mapping;
-    using Users;
 
-    public class TrainingViewModel : IMap<Training>
+    public class TrainingBasicEditViewModel : IMap<Training>
     {
         public int Id { get; set; }
 
@@ -25,10 +24,10 @@
 
         public double Calories { get; set; }
 
-        public UserViewModel User { get; set; }
+        public string UserId { get; set; }
 
         public int TrackId { get; set; }
 
-        public virtual Track Track { get; set; }
+        //public virtual Track Track { get; set; }
     }
 }
