@@ -2,15 +2,11 @@
 
 @{
     ViewBag.Title = "Checked-In Trainings";
-}
 
-@*<div class="row container">
-        <div class="well well-lg text-center">
-            <p class="lead">
-                <span class="text-info">Current date and time (UTC + 02:00): </span> @DateTime.Now
-            </p>
-        </div>
-    </div>*@
+    ViewBag.AjaxPagingAction = "AjaxLoadNextTrainings";
+    ViewBag.AjaxPagingArea = "";
+    Layout = "~/Views/Shared/_LayoutGridAjaxPaging.cshtml";
+}
 
 <div class="text-center page-header">
     <h1>
@@ -21,30 +17,11 @@
     </h1>
 </div>
 
-<div id="trainings-list" class="row container">
+<div id="items-list" class="row container">
     @Html.Partial("_CheckedInTrainingsList", Model)
 </div>
 
-<div class="row container" id="loading" style="display: none">
-    <div class="alert alert-info text-center">Loading...</div>
-</div>
-
-<div class="row container">
-    @Ajax.ActionLink("Show More...", "AjaxLoadNextTrainings", new { area = "", page = 0 },
-    new AjaxOptions
-    {
-        UpdateTargetId = "trainings-list",
-        LoadingElementId = "loading",
-        HttpMethod = "GET",
-        InsertionMode = InsertionMode.InsertAfter,
-        OnSuccess = "onLoadMoreTrainingsSuccess",
-        OnBegin = "onLoadMoreTrainingsBegin"
-    }, new { @class = "btn btn-info btn-lg btn-block", id = "loadMoreTrainings" })
-</div>
-
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
     <script>
         function updateTime(){
             var currentTime = new Date();
@@ -73,31 +50,5 @@
             document.getElementById('clock').innerHTML = t_str;
         }
         setInterval(updateTime, 1000);
-    </script>
-
-    <script>
-        var nextPage = 1;
-
-        var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
-        loadMoreTrainingsBtn.on('click', function () {
-            console.log(nextPage);
-            var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
-            loadMoreTrainingsBtn.attr('href', hrefString);
-            nextPage++;
-        });
-
-        function onLoadMoreTrainingsSuccess(data) {
-            console.log("This is the OnSuccessCallback: " + data);
-            if (!data) {
-                loadMoreTrainingsBtn.addClass('disabled');
-                loadMoreTrainingsBtn.text('No more');
-            }
-
-            loadMoreTrainingsBtn.show();
-        }
-
-        function onLoadMoreTrainingsBegin() {
-            loadMoreTrainingsBtn.hide();
-        }
     </script>
 }

@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "My Trainings";
+
+    ViewBag.AjaxPagingAction = "AjaxLoadNextTrainings";
+    ViewBag.AjaxPagingArea = "private";
+    Layout = "~/Views/Shared/_LayoutGridAjaxPaging.cshtml";
 }
 
 <p>
@@ -10,54 +14,14 @@
 
 <h2>My Trainings</h2>
 
-<div id="trainings-list" class="row container">
+<div id="items-list" class="row container">
     @Html.Partial("_TrainingsList", Model)
-</div>
-
-<div class="row container" id="loading" style="display: none">
-    <div class="alert alert-info text-center">Loading...</div>
-</div>
-
-<div class="row container">
-    @Ajax.ActionLink("Load Older...", "AjaxLoadNextTrainings", new { area = "private", page = 0 },
-    new AjaxOptions
-    {
-        UpdateTargetId = "trainings-list",
-        LoadingElementId = "loading",
-        HttpMethod = "GET",
-        InsertionMode = InsertionMode.InsertAfter,
-        OnSuccess = "onLoadMoreTrainingsSuccess",
-        OnBegin = "onLoadMoreTrainingsBegin"
-    }, new { @class = "btn btn-info btn-lg btn-block", id = "loadMoreTrainings" })
 </div>
 
 @Html.Partial("_Modal")
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        var nextPage = 1;
-        var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
-        loadMoreTrainingsBtn.on('click', function () {
-            var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
-            console.log(hrefString);
-            loadMoreTrainingsBtn.attr('href', hrefString);
-            nextPage++;
-        });
-
-        function onLoadMoreTrainingsSuccess(data) {
-            if (data === null || data.trim() === '') {
-                loadMoreTrainingsBtn.text('No more');
-                loadMoreTrainingsBtn.addClass('disabled');
-            }
-
-            loadMoreTrainingsBtn.show();
-        }
-
-        function onLoadMoreTrainingsBegin() {
-            loadMoreTrainingsBtn.hide();
-        }
-
+    <script id="ajax-checkin">
         function onWatchSuccess(data) {
             if (data.error) {
                 $('#modalTitle').html('Error');
