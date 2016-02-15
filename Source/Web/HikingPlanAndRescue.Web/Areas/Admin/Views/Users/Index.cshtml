@@ -7,6 +7,10 @@
 
 <h2>Users Administrator</h2>
 
+<p>
+    @Html.ActionLink("Add", "create", "users", null, new { @class = "btn btn-primary btn-lg" })
+</p>
+
 @Html.Grid(Model).Columns(columns =>
 {
 
@@ -16,7 +20,8 @@
             .SetWidth(30)
             .RenderValueAs(d =>
             @<b>
-                @Html.ActionLink("Edit", "Edit", new { id = d.Id })
+                 @Html.ActionLink("Delete", "Delete", new { id = d.Id }, new { @class="btn btn-warning"})
+                @Html.ActionLink("Edit", "Edit", new { id = d.Id }, new { @class = "btn btn-default" })
             </b>);
 
     columns.Add(o => o.FirstName)

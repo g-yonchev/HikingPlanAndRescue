@@ -152,6 +152,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(TrainingEditViewModel model)
         {
             if (!this.ModelState.IsValid)
