@@ -2,10 +2,7 @@
 
 @{
     ViewBag.Title = "My Trainings";
-    ViewBag.Page = 0;
 }
-
-<div id="ajaxMessage" class="alert alert-info" style="display:none"></div>
 
 <p>
     @Html.ActionLink("Add", "create", "trainings", null, new { @class = "btn btn-primary btn-lg" })
@@ -40,12 +37,8 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         var nextPage = 1;
-        var ajaxMessage = $('#ajaxMessage');
-        ajaxMessage.hide();
-
         var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
         loadMoreTrainingsBtn.on('click', function () {
-            //console.log(nextPage);
             var hrefString = loadMoreTrainingsBtn.attr('href').replace('page=' + (nextPage - 1), 'page=' + nextPage);
             console.log(hrefString);
             loadMoreTrainingsBtn.attr('href', hrefString);
@@ -53,8 +46,6 @@
         });
 
         function onLoadMoreTrainingsSuccess(data) {
-            //console.log("This is the OnSuccessCallback: " + data);
-            console.log(data);
             if (data === null || data.trim() === '') {
                 loadMoreTrainingsBtn.text('No more');
                 loadMoreTrainingsBtn.addClass('disabled');
@@ -68,7 +59,6 @@
         }
 
         function onWatchSuccess(data) {
-            console.log(data);
             if (data.error) {
                 $('#modalTitle').html('Error');
                 $('#modalMessage').html(data.error);
@@ -76,11 +66,6 @@
             }
 
             $('#' + data.id).html(data.data);
-
-            //if (data.CheckedOutOn) {
-            //    window.location.href = '/private/trainings/edit/' + data.Id;
-            //}
         }
-
     </script>
 }

@@ -2,6 +2,12 @@
 
 ## Todos
 
+- show checked in only to registered
+- allow users to comment whether they have contacted relatives
+- on public page show popular routes maybe, not checked-in
+- create global error handling page
+
+- add how many hours are checked-in trainings overdue
 - list user\`s tracks
 - add file (kml or gpx) for track
 - parse track parameters from file
@@ -14,7 +20,7 @@
 - automatically add weather conditions for training (some remote service)
 - add equipment items for training
 - administrator area with CRUD for users, trainings (MVC grid or Kendo UI Grid)
-- fix database creation modification times to be UTC
+- fix database creation modification times to be UTC (HARD!)
 - special html chars handling
 - unit testing
 - host the app in Azure
