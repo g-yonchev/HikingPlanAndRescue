@@ -71,6 +71,10 @@
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>HikingPlanAndRescue.Data.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HikingPlanAndRescue.Services.Web\HikingPlanAndRescue.Services.Web.csproj">
+      <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
+      <Name>HikingPlanAndRescue.Services.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Accord.3.0.2\build\Accord.targets" Condition="Exists('..\..\packages\Accord.3.0.2\build\Accord.targets')" />

@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binders\DoubleModelBinder.cs" />
+    <Compile Include="Binders\NullableDoubleModelBinder.cs" />
     <Compile Include="Constraints\AdminRouteConstraint.cs" />
     <Compile Include="Constraints\AuthenticationRouteConstraint.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />

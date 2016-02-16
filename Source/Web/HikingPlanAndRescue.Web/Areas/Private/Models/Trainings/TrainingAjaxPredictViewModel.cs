@@ -20,8 +20,8 @@
 
         public DateTime? EndDate { get; set; }
 
-        public double Water { get; set; }
+        public double? Water { get; set; }
 
-        public double Calories { get; set; }
+        public double? Calories { get; set; }
     }
 }

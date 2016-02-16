@@ -27,7 +27,8 @@
                 }
             }
 
-            return (T)HttpRuntime.Cache[itemName];
+            T item = (T)HttpRuntime.Cache[itemName];
+            return item;
         }
 
         public void Remove(string itemName)

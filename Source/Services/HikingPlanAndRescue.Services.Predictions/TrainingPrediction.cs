@@ -6,28 +6,32 @@ using System.Threading.Tasks;
 using Accord.Statistics.Models.Regression.Linear;
 using HikingPlanAndRescue.Data.Common;
 using HikingPlanAndRescue.Data.Models;
+using HikingPlanAndRescue.Services.Web;
 
 namespace HikingPlanAndRescue.Services.Predictions
 {
     public class TrainingPrediction : ITrainingPrediction
     {
+        private ICacheService cache;
         private readonly IDbRepository<Training> trainings;
 
-        public TrainingPrediction(IDbRepository<Training> trainings)
+        public TrainingPrediction(IDbRepository<Training> trainings, ICacheService cache)
         {
             this.trainings = trainings;
+            this.cache = cache;
         }
 
-        public Training Predict(Training training)
+        public MultivariateLinearRegression GetPredictionModel(string userId)
         {
-            var inputDataSet = new double[1000][];
-            var outputDataSet = new double[1000][];
-
             var dataSet = this.trainings
                 .All()
+                .Where(x => x.UserId == userId)
                 .OrderByDescending(x => x.CreatedOn)
                 .Take(1000)
                 .ToArray();
+
+            var inputDataSet = new double[dataSet.Length][];
+            var outputDataSet = new double[dataSet.Length][];
 
             int i = 0;
             foreach (var dataSetTraining in dataSet)
@@ -57,6 +61,19 @@ namespace HikingPlanAndRescue.Services.Predictions
             var regression = new MultivariateLinearRegression(3, 3);
             double error = regression.Regress(inputDataSet, outputDataSet);
 
+            return regression;
+        }
+
+        public Training Predict(Training training)
+        {
+            var model = cache.Get(
+                training.UserId,
+                () =>
+                {
+                    return this.GetPredictionModel(training.UserId);
+                }
+                , 5 * 60);
+
             var trainingDuration = training.EndDate - training.StartDate;
             var input = new double[]
                 {
@@ -65,7 +82,7 @@ namespace HikingPlanAndRescue.Services.Predictions
                     training.Track.AscentLength,
                 };
 
-            var result = regression.Compute(input);
+            var result = model.Compute(input);
 
             training.Calories = result[0];
             training.Water = result[1];

@@ -22,7 +22,9 @@
             ViewEngines.Engines.Add(new RazorViewEngine());
             DatabaseConfig.Config();
             AutofacConfig.RegisterAutofac();
+
             ModelBinders.Binders.Add(typeof(double), new DoubleModelBinder());
+            ModelBinders.Binders.Add(typeof(double?), new NullableDoubleModelBinder());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
