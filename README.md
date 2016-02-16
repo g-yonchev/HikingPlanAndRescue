@@ -2,20 +2,22 @@
 
 ## Todos
 
-- show checked in only to registered
-- allow users to comment whether they have contacted relatives
-- on public page show popular routes maybe, not checked-in
-- create global error handling page
-
+### Trainings
+- show checked in only to registered or just hide sensitive details for unregistered
+- allow users to comment whether they have contacted and warned relatives
 - add how many hours are checked-in trainings overdue
+- at user login home add warning for overdue checkin
+
+### Tracks
 - list user\`s tracks
+- tracks can be rated
+- on public page show popular tracks
 - add file (kml or gpx) for track
 - parse track parameters from file
-- list top rated tracks and download files
-- at user login home add warning for overdue checkout
+
+### Extras
 - suggest other tracks based on current preferences (length, location etc.)
 - show statistics for users trainings, total calories burned etc.
-- routes can be listed and rated
 - cache regression models for user trainings
 - automatically add weather conditions for training (some remote service)
 - add equipment items for training
@@ -25,106 +27,8 @@
 - unit testing
 - host the app in Azure
 
-## Requirements
-
-- unit testing
-- special html chars handling
-- host the app in Azure
-- 15 controllers
-- 40 actions
-
-## Database:
-
-- User
-    - Age
-    - Weight
-    - EquipmentItems
-    - TrainingSessions
-    - MonitoredTrainingSessions
-
-- Equipment
-    - User
-    - Name
-    - Weight
-
-- Training
-    - StartDate
-    - EndDate (predict)
-    - WaterSupply (predict)
-    - CaloriesSupply (predict)
-    - EquipmentItems
-    - User
-    - TrainingSessionWeather (auto or manual fill)
-    - Track
-    - StressCoeff
-
-- TrainingWeather
-    - Training
-    - PredominantWindDirection
-    - AverageWindStrength
-    - AverageTemperature
-    - AverageHumidity
-    - AverageRainfall
-
-- Track
-    - User
-    - Length (auto)
-    - AverageAscentInclination (auto)
-    - Ascent (auto)
-    - Descent (auto)
-    - StressCoeff (Lenght + AvgAscent / length * 100) (auto)
-    - File (kml)
-    - Roads(km)
-    - Offroads(km)
-    - Trails(km)
-
-- TrackVoting
-    - User
-    - Track
-    - Value
-
-- WatchedTraining
-    - Training PK,FK
-    - DateCheckedIn
-    - DateCheckedOut
-
-
-
-## Site pages
-
-### PRIVATE
-
-    - Profile
-    - Trainings (CRUD)
-    - Statistics
-    - Monitored Trainings
-    - Tracks (CRUD and statistic)
-    - Equipment
-
-### PUBLIC
-
-    - MonitoredTrainings
-        - Overdue(DEFAULT)
-            Shows monitored trainings that are overdue, sorts them by overdue amount
-        - Future
-            User may decide to join
-        - Current
-            Shows all checked-in trainings that are currently in progress.
-        - Past
-
-    - Tracks (public)
-        List and download available Tracks, see users, sort them by difficulty
-
-    - User ranking
-        By total distance and time trained
-
-### ADMIN
-
-    - MonitoredTrainings (CRUD)
-    - Tracks (CRUD)
-    - Users (CRUD)
-
-
+### Requirements
+- tests
 
 ## Statistics (Track your performance)
 
