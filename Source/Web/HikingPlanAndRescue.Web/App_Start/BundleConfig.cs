@@ -29,7 +29,7 @@
                       "~/Content/bootstrap-theme.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/kendo").Include(
+            bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
                         "~/Content/kendo/kendo.common.min.css",
                         "~/Content/kendo/kendo.common-bootstrap.min.css",
                         "~/Content/kendo/kendo.default.min.css"));
