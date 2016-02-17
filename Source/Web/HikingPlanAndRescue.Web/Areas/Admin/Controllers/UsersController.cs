@@ -9,7 +9,7 @@
     using Microsoft.AspNet.Identity;
     using Models.Users;
     using Services.Data;
-
+    using Services.Data.Contracts;
     public class UsersController : BaseController
     {
         private IUsersService users;

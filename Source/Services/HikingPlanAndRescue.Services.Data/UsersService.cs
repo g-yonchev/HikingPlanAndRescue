@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using Contracts;
     using HikingPlanAndRescue.Data.Common;
     using HikingPlanAndRescue.Data.Models;
     using HikingPlanAndRescue.Web.Infrastructure.CustomExceptions;

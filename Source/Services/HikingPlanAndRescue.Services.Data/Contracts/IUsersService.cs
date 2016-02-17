@@ -1,4 +1,4 @@
-﻿namespace HikingPlanAndRescue.Services.Data
+﻿namespace HikingPlanAndRescue.Services.Data.Contracts
 {
     using System.Linq;
     using HikingPlanAndRescue.Data.Models;

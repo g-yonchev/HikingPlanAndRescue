@@ -12,6 +12,7 @@
     using Microsoft.AspNet.Identity;
     using Models;
     using Services.Data;
+    using Services.Data.Contracts;
     using Services.Predictions;
     using Web.Controllers;
 
@@ -31,7 +32,7 @@
         public ActionResult Index(int page = 0, int pageSize = PageSize)
         {
             var trainings = this.trainings
-                .GetByUser(this.User.Identity.GetUserId(), page, pageSize)
+                .GetByUserWithPaging(this.User.Identity.GetUserId(), page, pageSize)
                 .To<TrainingListItemViewModel>()
                 .ToList();
 
@@ -49,7 +50,7 @@
             Thread.Sleep(1000);
 
             var trainings = this.trainings
-                .GetByUser(this.User.Identity.GetUserId(), page, pageSize)
+                .GetByUserWithPaging(this.User.Identity.GetUserId(), page, pageSize)
                 .To<TrainingListItemViewModel>()
                 .ToList();
 
@@ -89,7 +90,7 @@
             }
 
             var training = this.Mapper.Map<Training>(model);
-            this.trainings.AddTraining(training);
+            this.trainings.Add(training);
             this.TempData["Success"] = "Item created!";
 
             return this.RedirectToAction("Index");

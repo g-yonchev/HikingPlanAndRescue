@@ -9,6 +9,7 @@
     using Microsoft.AspNet.Identity;
     using Models.Trainings;
     using Models.Users;
+    using Services.Data.Contracts;
     using Web.Controllers;
 
     public class TrainingsController : BaseController

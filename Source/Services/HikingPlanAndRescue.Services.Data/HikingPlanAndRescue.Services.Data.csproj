@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITrainingsService.cs" />
-    <Compile Include="IUsersService.cs" />
+    <Compile Include="Common\BaseDataService{T}.cs" />
+    <Compile Include="Common\IBaseDataService{T}.cs" />
+    <Compile Include="Contracts\ITrainingsService.cs" />
+    <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TracksService.cs" />
     <Compile Include="TrainingsService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>

@@ -13,6 +13,7 @@
     using Data.Common;
 
     using Services.Data;
+    using Services.Data.Contracts;
     using Services.Predictions;
     using Services.Web;
 
@@ -54,12 +55,13 @@
             builder.Register(x => new HttpCacheService())
                 .As<ICacheService>()
                 .InstancePerRequest();
+
             //builder.Register(x => new IdentifierProvider())
             //    .As<IIdentifierProvider>()
             //    .InstancePerRequest();
 
-            var servicesAssembly = Assembly.GetAssembly(typeof(ITrainingsService));
-            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            var dataServicesAssembly = Assembly.GetAssembly(typeof(ITrainingsService));
+            builder.RegisterAssemblyTypes(dataServicesAssembly).AsImplementedInterfaces();
 
             var predictionsServiceAssembly = Assembly.GetAssembly(typeof(ITrainingPrediction));
             builder.RegisterAssemblyTypes(predictionsServiceAssembly).AsImplementedInterfaces();

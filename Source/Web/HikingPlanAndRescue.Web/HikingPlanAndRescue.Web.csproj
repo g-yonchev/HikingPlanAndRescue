@@ -207,8 +207,11 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\TracksController.cs" />
     <Compile Include="Areas\Admin\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Admin\Models\Tracks\TrackEditViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Tracks\TrackListItemViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Trainings\TrainingBasicEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Trainings\TrainingFullEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Trainings\TrainingViewModel.cs" />
@@ -311,6 +314,21 @@
     <Content Include="Areas\Admin\Views\Trainings\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Trainings\web.config" />
     <Content Include="Areas\Admin\Views\Users\web.config" />
+    <Content Include="Areas\Admin\Views\Tracks\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Areas\Admin\Views\Tracks\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\web.config" />
     <None Include="Properties\PublishProfiles\HikingPlanAndRescue - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -374,9 +392,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Private\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
+    <Folder Include="Views\Tracks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

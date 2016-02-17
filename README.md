@@ -2,6 +2,18 @@
 
 ## Todos
 
+- Kendo Grid administration for tracks
+- private home page to choose what to do when logged in (analyze, plan or assist(others))
+    - analyze - give statistics for performance(total distance trained, total calories, total ascent) and filter by date
+    - plan - add a button to check-in the track on create, think about cancelling checkinout and manual date editing
+    - assist - move checked in trainings list to private
+- public home page with most popular tracks (cached)
+    - tracks have likes
+
+- unit tests
+- filters
+
+
 ### Trainings
 - show checked in only to registered or just hide sensitive details for unregistered
 - allow users to comment whether they have contacted and warned relatives

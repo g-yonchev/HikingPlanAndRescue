@@ -1,24 +1,17 @@
 ﻿namespace HikingPlanAndRescue.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Net;
     using System.Threading;
     using System.Web.Mvc;
-    using Data.Models;
     using HikingPlanAndRescue.Web.Infrastructure.Mapping;
-    using Infrastructure.CustomExceptions;
-    using Infrastructure.Extensions;
-    using Microsoft.AspNet.Identity;
-    using Services.Data;
-    using Services.Predictions;
+    using Services.Data.Contracts;
     using ViewModels.Trainings;
-    using Web.Controllers;
 
     public class TrainingsController : BaseController
     {
-        private ITrainingsService trainings;
         private const int PageSize = 15;
+        private ITrainingsService trainings;
 
         public TrainingsController(ITrainingsService trainings)
         {

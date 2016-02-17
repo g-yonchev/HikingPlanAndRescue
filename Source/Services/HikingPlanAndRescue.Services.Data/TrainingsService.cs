@@ -1,33 +1,26 @@
 ﻿namespace HikingPlanAndRescue.Services.Data
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
+    using Contracts;
     using HikingPlanAndRescue.Data.Common;
     using HikingPlanAndRescue.Data.Models;
     using HikingPlanAndRescue.Web.Infrastructure.CustomExceptions;
 
-    public class TrainingsService : ITrainingsService
+    public class TrainingsService : BaseDataService<Training>, ITrainingsService
     {
-        private readonly IDbRepository<Training> trainings;
         private IDbRepository<ApplicationUser> users;
 
-        public TrainingsService(IDbRepository<Training> trainings, IDbRepository<ApplicationUser> users)
+        public TrainingsService(IDbRepository<Training> data, IDbRepository<ApplicationUser> users)
+            : base(data)
         {
-            this.trainings = trainings;
             this.users = users;
         }
 
-        public void AddTraining(Training training)
-        {
-            this.trainings.Add(training);
-            this.trainings.Save();
-        }
-
-        public void Delete(int id, string userId, bool isAdmin)
+        public void Delete(object id, string userId, bool isAdmin)
         {
             var user = this.users.GetById(userId);
-            var training = this.trainings.GetById(id);
+            var training = this.data.GetById(id);
             if (training == null)
             {
                 throw new CustomServiceOperationException("No such training found.");
@@ -38,23 +31,13 @@
                 throw new CustomServiceOperationException("Cannot delete trainings you do not own.");
             }
 
-            this.trainings.Delete(training);
-            this.trainings.Save();
+            this.data.Delete(training);
+            this.data.Save();
         }
 
-        public IQueryable<Training> GetAll()
+        public IQueryable<Training> GetByUserWithPaging(string userId, int page = 0, int pageSize = 10)
         {
-            return this.trainings.All().OrderBy(x => x.Id);
-        }
-
-        public Training GetById(int id)
-        {
-            return this.trainings.GetById(id);
-        }
-
-        public IQueryable<Training> GetByUser(string userId, int page = 0, int pageSize = 10)
-        {
-            return this.trainings
+            return this.data
                 .All()
                 .Where(x => x.UserId == userId)
                 .OrderByDescending(x => x.EndDate)
@@ -64,7 +47,7 @@
 
         public IQueryable<Training> GetCheckedIn(int page, int pageSize)
         {
-            return this.trainings
+            return this.data
                 .All()
                 .Where(x => x.CheckedInOn != null && x.CheckedOutOn == null)
                 .OrderBy(x => x.EndDate)
@@ -72,14 +55,9 @@
                 .Take(pageSize);
         }
 
-        public void Update()
-        {
-            this.trainings.Save();
-        }
-
         public Training UpdateWatch(int trainingId, string command, string userId)
         {
-            var training = this.trainings.All().FirstOrDefault(x => x.Id == trainingId);
+            var training = this.data.All().FirstOrDefault(x => x.Id == trainingId);
             if (training == null)
             {
                 return null;
@@ -90,7 +68,7 @@
             }
             else if (command == "checkin")
             {
-                if (this.trainings.All()
+                if (this.data.All()
                     .Any(
                     x => x.CheckedInOn != null
                     && x.CheckedOutOn == null
@@ -114,10 +92,8 @@
                 training.EndDate = training.PredictedEndDate.Value;
             }
 
-            this.trainings.Save();
+            this.data.Save();
             return training;
         }
-
-
     }
 }
