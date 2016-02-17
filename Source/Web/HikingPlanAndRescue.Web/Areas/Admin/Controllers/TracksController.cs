@@ -1,114 +1,76 @@
 ﻿namespace HikingPlanAndRescue.Web.Areas.Admin.Controllers
 {
-    using System.Data.Entity;
-    using System.Linq;
     using System.Web.Mvc;
-    using HikingPlanAndRescue.Data;
     using HikingPlanAndRescue.Data.Models;
     using HikingPlanAndRescue.Web.Areas.Admin.Models.Tracks;
+    using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using Services.Data;
+    using Web.Controllers;
 
-    public class TracksController : Controller
+    public class TracksController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ITracksService tracks;
+
+        public TracksController(ITracksService tracks)
+        {
+            this.tracks = tracks;
+        }
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public ActionResult Tracks_Read([DataSourceRequest]DataSourceRequest request)
         {
-            IQueryable<Track> tracks = db.Tracks;
-            DataSourceResult result = tracks.ToDataSourceResult(request, c => new TrackListItemViewModel
-            {
-                Title = c.Title,
-                Id = c.Id,
-                CreatedOn = c.CreatedOn,
-                ModifiedOn = c.ModifiedOn,
-                Length = c.Length,
-                Ascent = c.Ascent,
-                AscentLength = c.AscentLength
-            });
+            var tracks = this.tracks.GetAll().To<TrackListItemViewModel>();
+            var result = tracks.ToDataSourceResult(request);
 
-            return Json(result);
+            return this.Json(result);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Tracks_Create([DataSourceRequest]DataSourceRequest request, TrackListItemViewModel track)
+        public ActionResult Tracks_Create([DataSourceRequest]DataSourceRequest request, TrackListItemViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var entity = new Track
-                {
-                    Title = track.Title,
-                    CreatedOn = track.CreatedOn,
-                    ModifiedOn = track.ModifiedOn,
-                    Length = track.Length,
-                    Ascent = track.Ascent,
-                    AscentLength = track.AscentLength
-                };
-
-                db.Tracks.Add(entity);
-                db.SaveChanges();
-                track.Id = entity.Id;
+                var entity = this.Mapper.Map<Track>(model);
+                this.tracks.Add(entity);
+                model.Id = entity.Id;
             }
 
-            return Json(new[] { track }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Tracks_Update([DataSourceRequest]DataSourceRequest request, TrackEditViewModel track)
+        public ActionResult Tracks_Update([DataSourceRequest]DataSourceRequest request, TrackEditViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var entity = new Track
-                {
-                    Id = track.Id,
-                    Title = track.Title,
-                    CreatedOn = track.CreatedOn,
-                    //ModifiedOn = track.ModifiedOn,
-                    Length = track.Length,
-                    Ascent = track.Ascent,
-                    AscentLength = track.AscentLength
-                };
-
-                db.Tracks.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
+                var trackEntity = this.tracks.GetById(model.Id);
+                this.Mapper.Map(model, trackEntity);
+                this.tracks.Save();
             }
 
-            return Json(new[] { track }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Tracks_Destroy([DataSourceRequest]DataSourceRequest request, TrackListItemViewModel track)
+        public ActionResult Tracks_Destroy([DataSourceRequest]DataSourceRequest request, TrackListItemViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var entity = new Track
-                {
-                    Id = track.Id,
-                    Title = track.Title,
-                    CreatedOn = track.CreatedOn,
-                    ModifiedOn = track.ModifiedOn,
-                    Length = track.Length,
-                    Ascent = track.Ascent,
-                    AscentLength = track.AscentLength
-                };
-
-                db.Tracks.Attach(entity);
-                db.Tracks.Remove(entity);
-                db.SaveChanges();
+                this.tracks.Delete(model.Id);
             }
 
-            return Json(new[] { track }.ToDataSourceResult(request, ModelState));
+            return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            this.tracks.Dispose();
             base.Dispose(disposing);
         }
     }

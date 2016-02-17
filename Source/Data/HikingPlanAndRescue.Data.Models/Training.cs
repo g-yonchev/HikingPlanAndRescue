@@ -5,7 +5,7 @@
     using HikingPlanAndRescue.Data.Common.Models;
     using Models;
 
-    public class Training : BaseModel<int>
+    public class Training : BaseModel<int>, IEntitiyWithCreator
     {
         public Training()
         {

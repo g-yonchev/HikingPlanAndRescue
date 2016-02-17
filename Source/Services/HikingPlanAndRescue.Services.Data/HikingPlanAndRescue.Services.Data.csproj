@@ -45,9 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BaseDataService{T}.cs" />
+    <Compile Include="Common\BaseDataWithCreatorService{T}.cs" />
     <Compile Include="Common\IBaseDataService{T}.cs" />
+    <Compile Include="Common\IBaseDataWithCreatorService{T}.cs" />
     <Compile Include="Contracts\ITrainingsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="Contracts\ITracksService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TracksService.cs" />
     <Compile Include="TrainingsService.cs" />

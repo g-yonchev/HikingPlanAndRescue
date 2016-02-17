@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
 
-    public class Track : BaseModel<int>
+    public class Track : BaseModel<int>, IEntitiyWithCreator
     {
         public Track()
         {

@@ -1,9 +1,9 @@
-﻿namespace HikingPlanAndRescue.Services.Data
+﻿namespace HikingPlanAndRescue.Services.Data.Common
 {
     using System.Linq;
     using HikingPlanAndRescue.Data.Common.Models;
 
-    public interface IBaseDataService<T> 
+    public interface IBaseDataService<T>
         where T : class, IDeletableEntity, IAuditInfo
     {
         void Add(T training);
@@ -12,8 +12,12 @@
 
         IQueryable<T> GetAll();
 
+        IQueryable<T> GetAllWithPaging(int page = 0, int pageSize = 10);
+
         T GetById(object id);
 
-        void Update();
+        void Save();
+
+        void Dispose();
     }
 }

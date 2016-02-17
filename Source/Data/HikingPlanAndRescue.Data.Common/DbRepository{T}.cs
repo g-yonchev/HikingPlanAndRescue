@@ -65,5 +65,10 @@
         {
             this.Context.SaveChanges();
         }
+
+        public void Dispose()
+        {
+            this.Context.Dispose();
+        }
     }
 }

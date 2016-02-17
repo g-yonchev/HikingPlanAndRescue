@@ -121,7 +121,7 @@
             Training updatedTraining = null;
             try
             {
-                updatedTraining = this.trainings.UpdateWatch(trainingId, command, userId);
+                updatedTraining = this.trainings.UpdateCheckInOut(trainingId, command, userId);
             }
             catch (CustomServiceOperationException e)
             {
@@ -164,7 +164,7 @@
 
             Training training = this.trainings.GetById(model.Id);
             this.Mapper.Map(model, training);
-            this.trainings.Update();
+            this.trainings.Save();
             this.TempData["Success"] = "Successful edit.";
             return this.RedirectToAction("Index");
         }

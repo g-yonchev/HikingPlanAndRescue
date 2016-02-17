@@ -55,7 +55,7 @@
 
             Training training = this.trainings.GetById(model.Training.Id);
             this.Mapper.Map(model.Training, training);
-            this.trainings.Update();
+            this.trainings.Save();
             this.TempData["Success"] = "Successful edit.";
             return this.RedirectToAction("Index");
         }
