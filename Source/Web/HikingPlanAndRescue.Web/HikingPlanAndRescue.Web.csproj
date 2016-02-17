@@ -297,7 +297,7 @@
     <Content Include="Areas\Private\Views\Trainings\Index.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\Create.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_TrainingListItem.cshtml" />
-    <Content Include="Areas\Private\Views\Trainings\_CheckInBtn.cshtml" />
+    <Content Include="Areas\Private\Views\Trainings\_CheckInOutBtn.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_TrainingsList.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />

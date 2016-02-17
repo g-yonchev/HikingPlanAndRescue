@@ -18,7 +18,7 @@
     ViewBag.Command = "checkin";
     ViewBag.Text = "CheckIn";
     <p>
-        @Html.Partial("_CheckInBtn")
+        @Html.Partial("_CheckInOutBtn")
     </p>
 }
 else if (Model.CheckedInOn != null && Model.CheckedOutOn == null)
@@ -27,7 +27,7 @@ else if (Model.CheckedInOn != null && Model.CheckedOutOn == null)
     ViewBag.Command = "checkout";
     ViewBag.Text = "CheckOut";
     <p>
-        @Html.Partial("_CheckInBtn")
+        @Html.Partial("_CheckInOutBtn")
     </p>
 }
 else if (Model.CheckedInOn != null && Model.CheckedOutOn != null)
@@ -35,8 +35,8 @@ else if (Model.CheckedInOn != null && Model.CheckedOutOn != null)
     <p>CheckedIn on: @Html.DisplayFor(x => x.CheckedInOn)</p>
     <p>CheckedOut on: @Html.DisplayFor(x => x.CheckedOutOn)</p>
     ViewBag.Command = "reset";
-    ViewBag.Text = "Revert CheckIn-Out";
-    @Html.Partial("_CheckInBtn")
+    ViewBag.Text = "Cancel CheckInOut";
+    @Html.Partial("_CheckInOutBtn")
 }
 
 <p>
