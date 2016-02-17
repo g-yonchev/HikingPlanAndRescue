@@ -7,6 +7,21 @@
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
+                        "~/Content/kendo/kendo.common.min.css",
+                        "~/Content/kendo/kendo.common-bootstrap.min.css",
+                        "~/Content/kendo/kendo.default.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                        "~/Scripts/kendo/kendo.all.min.js",
+                        "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/gridmvc").Include(
+                        "~/Scripts/gridmvc.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/gridmvc").Include(
+                        "~/Content/Gridmvc.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         //"~/Scripts/kendo/jquery.min.js",
                         "~/Scripts/jquery-{version}.js",
@@ -29,20 +44,7 @@
                       "~/Content/bootstrap-theme.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
-                        "~/Content/kendo/kendo.common.min.css",
-                        "~/Content/kendo/kendo.common-bootstrap.min.css",
-                        "~/Content/kendo/kendo.default.min.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
-                        "~/Scripts/kendo/kendo.all.min.js",
-                        "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/gridmvc").Include(
-                        "~/Scripts/gridmvc.min.js"));
-
-            bundles.Add(new StyleBundle("~/Content/gridmvc").Include(
-                        "~/Content/Gridmvc.css"));
+            
         }
     }
 }

@@ -309,6 +309,8 @@
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Trainings\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Trainings\web.config" />
+    <Content Include="Areas\Admin\Views\Users\web.config" />
     <None Include="Properties\PublishProfiles\HikingPlanAndRescue - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
