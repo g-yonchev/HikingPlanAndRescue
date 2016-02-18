@@ -2,10 +2,8 @@
 
 ## Todos
 
-- private home page to choose what to do when logged in (analyze, plan or assist(others)) - 14
-    - analyze - give statistics for performance(total distance trained, total calories, total ascent) and filter by date
-    - plan - add a button to check-in the track on create, think about cancelling checkinout and manual date editing
-    - help - move checked in trainings list to private
+- analyze - give statistics for performance(total distance trained, total calories, total ascent) and filter by date
+- plan - add a button to check-in the track on create, think about cancelling checkinout and manual date editing
 
 - public home page with most popular tracks (cached)
     - tracks have likes

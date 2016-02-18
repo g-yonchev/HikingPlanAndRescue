@@ -17,7 +17,7 @@
 
         protected IDbRepository<ApplicationUser> Users { get; set; }
 
-        public IQueryable<T> GetByUserWithPaging(string userId, int page = 0, int pageSize = 10)
+        public IQueryable<T> GetAllByUserWithPaging(string userId, int page = 0, int pageSize = 10)
         {
             return this.Data
                 .All()
@@ -25,6 +25,13 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .Skip(page * pageSize)
                 .Take(pageSize);
+        }
+
+        public IQueryable<T> GetAllByUser(string userId)
+        {
+            return this.Data
+                .All()
+                .Where(x => x.UserId == userId);
         }
 
         public void Delete(object id, string userId, bool isAdmin)

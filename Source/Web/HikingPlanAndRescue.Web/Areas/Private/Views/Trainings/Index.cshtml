@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HikingPlanAndRescue.Web.Areas.Private.Models.TrainingListItemViewModel>
+﻿@model HikingPlanAndRescue.Web.Areas.Private.Models.Trainings.TrainingsIndexViewModel
 
 @{
     ViewBag.Title = "My Trainings";
@@ -12,10 +12,14 @@
     @Html.ActionLink("Add", "create", "trainings", null, new { @class = "btn btn-primary btn-lg" })
 </p>
 
-<h2>My Trainings</h2>
+<div class="row container">
+    @Html.Partial("_TrainingsStats", Model.Stats)
+</div>
+
+<h1 class="text-center">My Trainings</h1>
 
 <div id="items-list" class="row container">
-    @Html.Partial("_TrainingsList", Model)
+    @Html.Partial("_TrainingsList", Model.Trainings)
 </div>
 
 @Html.Partial("_Modal")

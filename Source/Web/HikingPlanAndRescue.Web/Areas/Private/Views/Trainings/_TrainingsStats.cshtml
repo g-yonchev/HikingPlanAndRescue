@@ -1,0 +1,16 @@
+﻿@model HikingPlanAndRescue.Web.Areas.Private.Models.Trainings.TrainingsStatsViewModel
+
+<div class="lead">
+    <div class="col-md-4 well center-block">
+        <p>Total distance trained:</p>
+        <p><strong>@Html.DisplayFor(x => x.TotalLength) km</strong></p>
+    </div>
+    <div class="col-md-4 well center-block">
+        <p>Total ascent:</p>
+        <p><strong>@Html.DisplayFor(x => x.TotalAscent) m</strong></p>
+    </div>
+    <div class="col-md-4 well center-block">
+        <p>Total calories burned:</p>
+        <p><strong>@Html.DisplayFor(x => x.TotalCalories) kcal</strong></p>
+    </div>
+</div>

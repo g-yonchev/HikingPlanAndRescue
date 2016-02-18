@@ -12,6 +12,7 @@
     using Infrastructure.Filters;
     using Microsoft.AspNet.Identity;
     using Models;
+    using Models.Trainings;
     using Services.Data.Contracts;
     using Services.Predictions;
     using Web.Controllers;
@@ -28,30 +29,36 @@
             this.trainingPredictions = trainingPredictions;
         }
 
-        // GET: Private/Trainings
         public ActionResult Index(int page = 0, int pageSize = PageSize)
         {
+            var userId = this.User.Identity.GetUserId();
             var trainings = this.trainings
-                .GetByUserWithPaging(this.User.Identity.GetUserId(), page, pageSize)
+                .GetAllByUserWithPaging(userId, page, pageSize)
                 .To<TrainingListItemViewModel>()
                 .ToList();
 
-            return this.View(trainings);
+            var stats = new TrainingsStatsViewModel()
+            {
+                TotalAscent = this.trainings.GetAllByUser(userId).Sum(x => x.Track.Ascent),
+                TotalLength = this.trainings.GetAllByUser(userId).Sum(x => x.Track.Length),
+                TotalCalories = this.trainings.GetAllByUser(userId).Sum(x => x.Calories),
+            };
+
+            var model = new TrainingsIndexViewModel()
+            {
+                Stats = stats,
+                Trainings = trainings
+            };
+
+            return this.View(model);
         }
 
         [AjaxRequestOnly]
         public ActionResult AjaxLoadNextTrainings(int page = 0, int pageSize = PageSize)
         {
-            if (!this.Request.IsAjaxRequest())
-            {
-                this.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                return this.Content("This action can be invoke only by AJAX call");
-            }
-
             Thread.Sleep(1000);
-
             var trainings = this.trainings
-                .GetByUserWithPaging(this.User.Identity.GetUserId(), page, pageSize)
+                .GetAllByUserWithPaging(this.User.Identity.GetUserId(), page, pageSize)
                 .To<TrainingListItemViewModel>()
                 .ToList();
 

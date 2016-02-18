@@ -231,6 +231,8 @@
     <Compile Include="Areas\Private\Models\Trainings\TrainingCreateViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingEditViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingListItemViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Trainings\TrainingsIndexViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Trainings\TrainingsStatsViewModel.cs" />
     <Compile Include="Areas\Private\PrivateAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -334,6 +336,7 @@
     <Content Include="Areas\Private\Views\CheckedInTrainings\Index.cshtml" />
     <Content Include="Areas\Private\Views\CheckedInTrainings\_CheckedInTrainingsList.cshtml" />
     <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Private\Views\Trainings\_TrainingsStats.cshtml" />
     <None Include="Properties\PublishProfiles\HikingPlanAndRescue - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />

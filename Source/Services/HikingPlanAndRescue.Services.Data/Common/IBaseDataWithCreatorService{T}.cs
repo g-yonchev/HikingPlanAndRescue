@@ -10,6 +10,8 @@
     {
         void Delete(object id, string userId, bool isAdmin);
 
-        IQueryable<T> GetByUserWithPaging(string userId, int page = 0, int pageSize = 10);
+        IQueryable<T> GetAllByUserWithPaging(string userId, int page = 0, int pageSize = 10);
+
+        IQueryable<T> GetAllByUser(string userId);
     }
 }

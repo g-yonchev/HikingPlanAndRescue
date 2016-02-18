@@ -30,6 +30,9 @@
                     @if (User.Identity.IsAuthenticated && !User.IsInRole(AppConstants.AdminRoleName))
                     {
                         @Html.Partial("_PrivateMenu")
+                        <li>
+                            @Html.ActionLink("See Checked-In", "index", "checkedintrainings", new { area = "private" }, null)
+                        </li>
                     }
                     @if (User.IsInRole(AppConstants.AdminRoleName))
                     {
