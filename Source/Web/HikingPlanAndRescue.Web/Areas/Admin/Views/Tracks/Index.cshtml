@@ -1,24 +1,29 @@
 ﻿
+
+
 @(Html.Kendo().Grid<HikingPlanAndRescue.Web.Areas.Admin.Models.Tracks.TrackListItemViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
-        columns.Bound(c => c.Title);
-        columns.Bound(c => c.Length);
-        columns.Bound(c => c.Ascent);
-        columns.Bound(c => c.AscentLength);
-        columns.Bound(c => c.CreatedOn);
-        columns.Bound(c => c.ModifiedOn);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          columns.Bound(c => c.Id);
+          columns.Bound(c => c.Title);
+          columns.Bound(c => c.Length);
+          columns.Bound(c => c.Ascent);
+          columns.Bound(c => c.AscentLength);
+          columns.Bound(c => c.CreatedOn).Format("{0:dd-MMM-yy hh:mm}");
+          columns.Bound(c => c.ModifiedOn).Format("{0:dd-MMM-yy hh:mm}");
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
-      .ToolBar(toolbar => {
-            toolbar.Create();
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
       })
       .ColumnMenu()
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
-      .Pageable()
+      .Pageable(page => page.Refresh(true))
       .Navigatable()
-      .Sortable(sortable => {
+      .Sortable(sortable =>
+      {
           sortable.SortMode(GridSortMode.MultipleColumn);
       })
       .Filterable()
@@ -30,5 +35,5 @@
           .Create(create => create.Action("Tracks_Create", "Tracks"))
           .Update(update => update.Action("Tracks_Update", "Tracks"))
           .Destroy(destroy => destroy.Action("Tracks_Destroy", "Tracks"))
-      )
+      ).HtmlAttributes(new { style = "height: 650px" })
 )

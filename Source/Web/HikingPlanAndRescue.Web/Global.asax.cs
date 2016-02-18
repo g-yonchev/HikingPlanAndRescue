@@ -1,7 +1,9 @@
 ﻿namespace HikingPlanAndRescue.Web
 {
     using System.Data.Entity;
+    using System.Globalization;
     using System.Reflection;
+    using System.Threading;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -18,6 +20,8 @@
     {
         protected void Application_Start()
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             DatabaseConfig.Config();

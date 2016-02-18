@@ -32,13 +32,14 @@
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Tracks_Create([DataSourceRequest]DataSourceRequest request, TrackListItemViewModel model)
+        public ActionResult Tracks_Create([DataSourceRequest]DataSourceRequest request, TrackInputViewModel model)
         {
             if (this.ModelState.IsValid)
             {
                 var entity = this.Mapper.Map<Track>(model);
                 this.tracks.Add(entity);
-                model.Id = entity.Id;
+                var responseModel = this.Mapper.Map<TrackListItemViewModel>(entity);
+                return this.Json(new[] { responseModel }.ToDataSourceResult(request, this.ModelState));
             }
 
             return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
@@ -52,19 +53,17 @@
                 var trackEntity = this.tracks.GetById(model.Id);
                 this.Mapper.Map(model, trackEntity);
                 this.tracks.Save();
+                var responseModel = this.Mapper.Map<TrackListItemViewModel>(trackEntity);
+                return this.Json(new[] { responseModel }.ToDataSourceResult(request, this.ModelState));
             }
 
             return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Tracks_Destroy([DataSourceRequest]DataSourceRequest request, TrackListItemViewModel model)
+        public ActionResult Tracks_Destroy([DataSourceRequest]DataSourceRequest request, TrackEditViewModel model)
         {
-            if (this.ModelState.IsValid)
-            {
-                this.tracks.Delete(model.Id);
-            }
-
+            this.tracks.Delete(model.Id);
             return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
 
