@@ -1,0 +1,12 @@
+﻿@model IEnumerable<HikingPlanAndRescue.Web.ViewModels.Tracks.TrackPublicViewModel>
+
+@{
+    ViewBag.Title = "Popular Tracks";
+    Layout = "~/Views/Shared/_LayoutGridAjaxPaging.cshtml";
+    ViewBag.AjaxPagingAction = "Index";
+    ViewBag.AjaxPagingArea = "";
+}
+
+<div id="items-list" class="container row">
+    @Html.Partial("_TracksList", Model)
+</div>

@@ -239,6 +239,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\TracksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -396,6 +397,8 @@
     <Content Include="Views\Shared\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutGridAjaxPaging.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Tracks\Index.cshtml" />
+    <Content Include="Views\Tracks\_TracksList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Private\Views\Shared\" />

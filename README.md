@@ -2,17 +2,17 @@
 
 ## Todos
 
-- analyze - give statistics for performance(total distance trained, total calories, total ascent) and filter by date
-- plan - add a button to check-in the track on create, think about cancelling checkinout and manual date editing
+- send task description for Native Script
 
-- public home page with most popular tracks (cached)
-    - tracks have likes
+- tracks have likes
+- private tracks page
+- public page with tracks
+
+- public home page with description
 
 - unit tests
 
-- filters
-
-- task description for Native Script
+- plan - add a button to check-in the track on create, think about cancelling checkinout and manual date editing
 
 ### Trainings
 - show checked in only to registered or just hide sensitive details for unregistered

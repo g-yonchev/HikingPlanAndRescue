@@ -38,6 +38,9 @@
                     {
                         @Html.Partial("_AdminMenu")
                     }
+                    <li>
+                        @Html.ActionLink("Popular tracks", "index", "tracks", new { area = "" }, null)
+                    </li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
