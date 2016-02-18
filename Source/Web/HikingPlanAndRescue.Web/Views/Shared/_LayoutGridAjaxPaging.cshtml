@@ -22,7 +22,6 @@
 </div>
 
 @section Scripts {
-    @RenderSection("scripts", required: false)
     <script id="ajax-pager">
         var nextPage = 1;
         var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
@@ -46,4 +45,6 @@
             loadMoreTrainingsBtn.hide();
         }
     </script>
+
+    @RenderSection("scripts", required: false)
 }

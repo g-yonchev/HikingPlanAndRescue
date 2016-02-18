@@ -3,7 +3,11 @@
 <h3>@Model.Title</h3>
 @if (Model.StartDate != null)
 {
-    <p class="info">@Html.DisplayFor(x => x.StartDate)</p>
+    <p class="info">Start Date: @Html.DisplayFor(x => x.StartDate)</p>
+}
+@if (Model.EndDate != null)
+{
+    <p class="info">End Date: @Html.DisplayFor(x => x.EndDate)</p>
 }
 <p class="lead">Track details:</p>
 <p>Title: @Html.DisplayFor(x => x.Title)</p>

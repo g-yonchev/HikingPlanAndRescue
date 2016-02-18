@@ -65,5 +65,19 @@
             this.Data.Save();
             return training;
         }
+
+        public IQueryable<Training> GetAllByUserWithPagingAndFiltering(string userId, int page, int pageSize, DateTime? fromDate, DateTime? toDate)
+        {
+            return this.Data
+                .All()
+                .Where(
+                    x => x.UserId == userId
+                        && (fromDate == null || x.StartDate >= fromDate)
+                        && (toDate == null || x.EndDate <= toDate))
+                .OrderBy(x => x.EndDate)
+                .Skip(page * pageSize)
+                .Take(pageSize);
+        }
+
     }
 }

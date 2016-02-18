@@ -29,19 +29,20 @@
             this.trainingPredictions = trainingPredictions;
         }
 
-        public ActionResult Index(int page = 0, int pageSize = PageSize)
+        public ActionResult Index(DateTime? fromDate, DateTime? toDate)
         {
             var userId = this.User.Identity.GetUserId();
-            var trainings = this.trainings
-                .GetAllByUserWithPaging(userId, page, pageSize)
+            var foundTrainings = this.trainings
+                .GetAllByUserWithPagingAndFiltering(userId, 0, PageSize, fromDate, toDate);
+            var trainings = foundTrainings
                 .To<TrainingListItemViewModel>()
                 .ToList();
 
             var stats = new TrainingsStatsViewModel()
             {
-                TotalAscent = this.trainings.GetAllByUser(userId).Sum(x => x.Track.Ascent),
-                TotalLength = this.trainings.GetAllByUser(userId).Sum(x => x.Track.Length),
-                TotalCalories = this.trainings.GetAllByUser(userId).Sum(x => x.Calories),
+                TotalAscent = (foundTrainings.Count() > 0) ? foundTrainings.Sum(x => x.Track.Ascent) : 0,
+                TotalLength = (foundTrainings.Count() > 0) ? foundTrainings.Sum(x => x.Track.Length) : 0,
+                TotalCalories = (foundTrainings.Count() > 0) ? foundTrainings.Sum(x => x.Calories) : 0,
             };
 
             var model = new TrainingsIndexViewModel()
@@ -54,11 +55,12 @@
         }
 
         [AjaxRequestOnly]
-        public ActionResult AjaxLoadNextTrainings(int page = 0, int pageSize = PageSize)
+        public ActionResult AjaxLoadNextTrainings(DateTime? fromDate, DateTime? toDate, int page = 0, int pageSize = PageSize)
         {
+            var userId = this.User.Identity.GetUserId();
             Thread.Sleep(1000);
             var trainings = this.trainings
-                .GetAllByUserWithPaging(this.User.Identity.GetUserId(), page, pageSize)
+                .GetAllByUserWithPagingAndFiltering(userId, page, pageSize, fromDate, toDate)
                 .To<TrainingListItemViewModel>()
                 .ToList();
 

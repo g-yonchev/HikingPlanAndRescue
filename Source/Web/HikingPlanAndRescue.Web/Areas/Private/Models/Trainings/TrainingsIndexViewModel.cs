@@ -1,5 +1,6 @@
 ﻿namespace HikingPlanAndRescue.Web.Areas.Private.Models.Trainings
 {
+    using System;
     using System.Collections.Generic;
 
     public class TrainingsIndexViewModel

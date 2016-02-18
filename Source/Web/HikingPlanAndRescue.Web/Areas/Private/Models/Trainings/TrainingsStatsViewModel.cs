@@ -6,10 +6,10 @@
 
     public class TrainingsStatsViewModel
     {
-        public double TotalAscent { get; set; }
+        public double? TotalAscent { get; set; }
 
-        public double TotalCalories { get; set; }
+        public double? TotalCalories { get; set; }
 
-        public double TotalLength { get; set; }
+        public double? TotalLength { get; set; }
     }
 }

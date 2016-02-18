@@ -13,6 +13,21 @@
 </p>
 
 <div class="row container">
+    <form action="/private/trainings/Index" method="get">
+        <h3>Filters</h3>
+        <div class="pull-left panel-body">
+            From Start Date: @(Html.Kendo().DateTimePicker().Name("fromDate"))
+        </div>
+        <div class="pull-left panel-body">
+            To End Date: @(Html.Kendo().DateTimePicker().Name("toDate"))
+        </div>
+        <div class="pull-left panel-body">
+            <button type="submit" id="btnFilter" class="btn btn-default">Filter</button>
+        </div>
+    </form>
+</div>
+
+<div class="row container">
     @Html.Partial("_TrainingsStats", Model.Stats)
 </div>
 
@@ -35,5 +50,14 @@
 
             $('#' + data.id).html(data.data);
         }
+    </script>
+    <script>
+        var loadMoreTrainingsBtn = jQuery('#loadMoreTrainings');
+        var hrefString = loadMoreTrainingsBtn.attr('href');
+        var fromDate = $('#fromDate');
+        var toDate = $('#toDate');
+        hrefString += '&fromDate=' + fromDate.val() + '&toDate=' + toDate.val();
+        console.log(hrefString);
+        loadMoreTrainingsBtn.attr('href', hrefString);
     </script>
 }
