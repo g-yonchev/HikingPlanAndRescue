@@ -220,12 +220,14 @@
     <Compile Include="Areas\Admin\Models\Users\UserCreateViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Private\Controllers\CheckedInTrainingsController.cs" />
     <Compile Include="Areas\Private\Controllers\HomeController.cs" />
     <Compile Include="Areas\Private\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackCreateViewModel.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackListViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingAjaxPredictViewModel.cs" />
+    <Compile Include="Areas\Private\Models\Trainings\TrainingCheckedInListItemViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingCreateViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingEditViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingListItemViewModel.cs" />
@@ -235,7 +237,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
-    <Compile Include="Controllers\TrainingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,7 +260,6 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Tracks\TrackPublicViewModel.cs" />
-    <Compile Include="ViewModels\Trainings\TrainingCheckedInListItemViewModel.cs" />
     <Compile Include="ViewModels\Users\UserPublicViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -299,7 +299,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Private\Views\web.config" />
-    <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\Index.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\Create.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_TrainingListItem.cshtml" />
@@ -332,6 +331,9 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TrackListItemViewModel.cshtml" />
     <Content Include="Areas\Private\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Private\Views\CheckedInTrainings\Index.cshtml" />
+    <Content Include="Areas\Private\Views\CheckedInTrainings\_CheckedInTrainingsList.cshtml" />
+    <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\HikingPlanAndRescue - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -384,8 +386,6 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Double.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
-    <Content Include="Views\Trainings\Index.cshtml" />
-    <Content Include="Views\Trainings\_CheckedInTrainingsList.cshtml" />
     <Content Include="Views\Shared\_Modal.cshtml" />
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />

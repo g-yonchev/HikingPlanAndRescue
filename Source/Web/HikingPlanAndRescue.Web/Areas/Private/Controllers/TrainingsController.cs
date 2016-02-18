@@ -9,18 +9,18 @@
     using HikingPlanAndRescue.Web.Infrastructure.Mapping;
     using Infrastructure.CustomExceptions;
     using Infrastructure.Extensions;
+    using Infrastructure.Filters;
     using Microsoft.AspNet.Identity;
     using Models;
-    using Services.Data;
     using Services.Data.Contracts;
     using Services.Predictions;
     using Web.Controllers;
 
     public class TrainingsController : BaseController
     {
+        private const int PageSize = 15;
         private ITrainingsService trainings;
         private ITrainingPrediction trainingPredictions;
-        private const int PageSize = 15;
 
         public TrainingsController(ITrainingsService trainings, ITrainingPrediction trainingPredictions)
         {
@@ -39,6 +39,7 @@
             return this.View(trainings);
         }
 
+        [AjaxRequestOnly]
         public ActionResult AjaxLoadNextTrainings(int page = 0, int pageSize = PageSize)
         {
             if (!this.Request.IsAjaxRequest())
@@ -97,6 +98,7 @@
         }
 
         [HttpPost]
+        [AjaxRequestOnly]
         public ActionResult AjaxPredict(TrainingAjaxPredictViewModel model)
         {
             if (!this.ModelState.IsValid)
@@ -111,6 +113,7 @@
             return this.Json(predictedTrainingViewModel);
         }
 
+        [AjaxRequestOnly]
         public ActionResult AjaxWatch(int trainingId, string command)
         {
             var userId = this.User.Identity.GetUserId();
@@ -169,6 +172,7 @@
             return this.RedirectToAction("Index");
         }
 
+        [AjaxRequestOnly]
         public ActionResult Delete(int id)
         {
             var userId = this.User.Identity.GetUserId();

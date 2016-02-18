@@ -1,11 +1,10 @@
-﻿namespace HikingPlanAndRescue.Web.ViewModels.Trainings
+﻿namespace HikingPlanAndRescue.Web.Areas.Private.Models
 {
     using System;
-    using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
-    using Tracks;
-    using Users;
+    using Web.ViewModels.Tracks;
+    using Web.ViewModels.Users;
 
     public class TrainingCheckedInListItemViewModel : IMap<Training>
     {
@@ -21,5 +20,4 @@
 
         public TrackPublicViewModel Track { get; set; }
     }
-
 }

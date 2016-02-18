@@ -16,9 +16,6 @@
                 return false;
             }
 
-            // eliminate other invalid values, etc
-            // if contains valid hour for your business logic, etc
-
             return true;
         }
     }
