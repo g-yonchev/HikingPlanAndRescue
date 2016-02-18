@@ -10,7 +10,17 @@
 
         public ActionResult Index()
         {
-            return this.Redirect("/");
+            if (this.User.IsInRole(Common.AppConstants.AdminRoleName))
+            {
+                return this.RedirectToAction("Index", "Home", new { area = "admin" });
+            }
+
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return this.RedirectToAction("Index", "Home", new { area = "private" });
+            }
+
+            return this.View();
         }
     }
 }

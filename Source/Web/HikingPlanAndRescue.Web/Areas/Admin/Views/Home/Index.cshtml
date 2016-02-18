@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Admin Home";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+@Html.ActionLink("Users", "Index", "users", new { area = "admin" }, new { @class="btn btn-default"})
+@Html.ActionLink("Trainings", "Index", "trainings", new { area = "admin" }, new { @class = "btn btn-default" })
+@Html.ActionLink("Tracks", "Index", "tracks", new { area = "admin" }, new { @class = "btn btn-default" })
+

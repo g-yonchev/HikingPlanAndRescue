@@ -23,17 +23,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "Index", "Trainings", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && !User.IsInRole(AppConstants.AdminRoleName))
                     {
-                        @Html.Partial("_MyStuff")
+                        @Html.Partial("_PrivateMenu")
                     }
-                    @if (User.IsInRole("Admin"))
+                    @if (User.IsInRole(AppConstants.AdminRoleName))
                     {
-                        @Html.Partial("_Admin")
+                        @Html.Partial("_AdminMenu")
                     }
                 </ul>
 

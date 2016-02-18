@@ -207,6 +207,7 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\TracksController.cs" />
     <Compile Include="Areas\Admin\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
@@ -219,6 +220,7 @@
     <Compile Include="Areas\Admin\Models\Users\UserCreateViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Private\Controllers\HomeController.cs" />
     <Compile Include="Areas\Private\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackCreateViewModel.cs" />
@@ -328,6 +330,8 @@
     <Content Include="Areas\Admin\Views\Tracks\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\web.config" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TrackListItemViewModel.cshtml" />
+    <Content Include="Areas\Private\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\HikingPlanAndRescue - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -385,14 +389,14 @@
     <Content Include="Views\Shared\_Modal.cshtml" />
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
-    <Content Include="Views\Shared\_MyStuff.cshtml" />
-    <Content Include="Views\Shared\_Admin.cshtml" />
+    <Content Include="Views\Shared\_PrivateMenu.cshtml" />
+    <Content Include="Views\Shared\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutGridAjaxPaging.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Private\Views\Shared\" />
     <Folder Include="ViewModels\Home\" />
-    <Folder Include="Views\Tracks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
