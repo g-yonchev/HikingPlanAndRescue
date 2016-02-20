@@ -1,5 +1,99 @@
 # Hiking Plan and Rescue Service
 
+## RESTful services
+
+### Authentication
+
+- __Register__
+
+    POST: http://hikingplanandrescue.azurewebsites.net/api/account/register
+
+    BODY:
+
+        {
+            "email":"u1@u.u",
+            "password":"u1",
+            "confirmPassword":"u1"
+        }
+
+- __Get token__
+
+    POST: http://hikingplanandrescue.azurewebsites.net/token
+    
+    HEADER: Content-Type, VALUE: x-www-form-url-encoded
+
+    BODY:
+
+        grant_type=password&username=u1@u.u&password=u1
+    
+
+### Trainings (Authorized)
+
+- __Get All__
+
+    GET: http://hikingplanandrescue.azurewebsites.net/api/Trainings
+    
+    HEADER: Authorization, VALUE: bearer {access token here!}
+
+- __Get by id__
+
+    GET: http://hikingplanandrescue.azurewebsites.net/api/Trainings/{training id here!}
+    
+    HEADER: Authorization, VALUE: bearer {access token here!}
+
+- __Edit a training__
+
+    PUT: http://hikingplanandrescue.azurewebsites.net/api/Trainings
+
+    HEADER: Authorization, VALUE: bearer {access token here!}
+
+    BODY:
+
+        {
+          "Id": 1073,
+          "StartDate": "2016-02-11T16:27:31.687",
+          "EndDate": "2016-02-12T03:27:31.687",
+          "PredictedEndDate": null,
+          "Title": "restedited",
+          "Water": 0.9436274401115381,
+          "Calories": 2384,
+          "Track": {
+            "Title": "Track36",
+            "Length": 15.266982025393787,
+            "Ascent": 699.9512386484776,
+            "AscentLength": 7.864620658971658
+          }
+        } 
+
+- __Add a training__
+
+    POST: http://hikingplanandrescue.azurewebsites.net/api/Trainings
+
+    HEADER: Authorization, VALUE: bearer {access token here!}
+
+    BODY:
+
+        {
+          "StartDate": "2016-02-11T16:27:31.687",
+          "EndDate": "2016-02-12T03:27:31.687",
+          "PredictedEndDate": null,
+          "Title": "restTraining1",
+          "Water": 0.9436274401115381,
+          "Calories": 2384,
+          "Track": {
+            "Title": "Track36",
+            "Length": 15.266982025393787,
+            "Ascent": 699.9512386484776,
+            "AscentLength": 7.864620658971658
+          }
+        }
+
+- __Delete a training__
+
+    POST: http://hikingplanandrescue.azurewebsites.net/api/Trainings/{training id here!}
+
+    HEADER: Authorization, VALUE: bearer {access token here!}
+
 ## Todos
 
 - send task description for Native Script
