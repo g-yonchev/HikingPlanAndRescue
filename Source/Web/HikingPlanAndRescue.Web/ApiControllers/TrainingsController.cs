@@ -112,10 +112,10 @@
                 return this.Json(new { error = "Cannot delete trainings you do not own" });
             }
 
-            db.Delete(training);
+            db.Delete(id);
             db.Save();
 
-            return Ok(training);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
