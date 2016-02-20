@@ -62,7 +62,9 @@
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Track.cs" />
+    <Compile Include="TrackVote.cs" />
     <Compile Include="Training.cs" />
+    <Compile Include="VoteType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

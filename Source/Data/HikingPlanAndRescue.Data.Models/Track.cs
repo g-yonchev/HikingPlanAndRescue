@@ -9,6 +9,7 @@
     {
         public Track()
         {
+            this.TrackVotes = new HashSet<TrackVote>();
         }
 
         public string Title { get; set; }
@@ -29,5 +30,7 @@
         public virtual ICollection<Training> Trainings { get; set; }
 
         //public enum TrackCategory { get; set; }
+
+        public virtual ICollection<TrackVote> TrackVotes { get; set; }
     }
 }

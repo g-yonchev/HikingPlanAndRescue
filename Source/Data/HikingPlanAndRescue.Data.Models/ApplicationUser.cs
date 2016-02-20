@@ -15,6 +15,7 @@
         {
             this.Tracks = new HashSet<Track>();
             this.Trainings = new HashSet<Training>();
+            this.TrackVotes = new HashSet<TrackVote>();
             this.CreatedOn = DateTime.Now;
         }
 
@@ -27,6 +28,8 @@
         public virtual ICollection<Track> Tracks { get; set; }
 
         public virtual ICollection<Training> Trainings { get; set; }
+
+        public virtual ICollection<TrackVote> TrackVotes { get; set; }
 
         public bool IsDeleted { get;  set; }
 
@@ -41,6 +44,14 @@
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
 
+            // Add custom user claims here
+            return userIdentity;
+        }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             // Add custom user claims here
             return userIdentity;
         }

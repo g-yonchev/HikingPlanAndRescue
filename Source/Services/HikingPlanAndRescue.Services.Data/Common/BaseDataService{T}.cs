@@ -16,9 +16,9 @@
 
         protected IDbRepository<T> Data { get; set; }
 
-        public virtual void Add(T training)
+        public virtual void Add(T item)
         {
-            this.Data.Add(training);
+            this.Data.Add(item);
             this.Data.Save();
         }
 

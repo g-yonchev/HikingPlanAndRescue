@@ -10,3 +10,21 @@
 <div id="items-list" class="container row">
     @Html.Partial("_TracksList", Model)
 </div>
+
+@section scripts{
+    <script>
+        var btnVoteUp = $('.voteUp');
+        var btnVoteDown = $('.voteDown');
+
+        btnVoteDown.on('click', function () {
+            console.log($(this).attr('data-id'));
+            console.log($(this).attr('data-value'));
+        });
+
+        btnVoteUp.on('click', function () {
+            console.log($(this).attr('data-id'));
+            console.log($(this).attr('data-value'));
+        });
+
+    </script>
+}

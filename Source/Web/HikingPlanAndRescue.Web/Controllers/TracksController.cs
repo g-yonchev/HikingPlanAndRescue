@@ -20,8 +20,8 @@
         {
             var pageTracks = this.tracks
                 .GetAllWithPaging(page, pageSize)
-                .OrderBy(x => x.Id)
-                .To<TrackPublicViewModel>();
+                .To<TrackPublicViewModel>()
+                .OrderBy(x => x.VotesCount);
 
             if (this.Request.IsAjaxRequest())
             {

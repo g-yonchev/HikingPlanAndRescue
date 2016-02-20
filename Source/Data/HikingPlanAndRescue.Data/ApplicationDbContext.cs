@@ -18,6 +18,8 @@
 
         public virtual IDbSet<Training> Trainings { get; set; }
 
+        public virtual IDbSet<TrackVote> TrackVotes { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
