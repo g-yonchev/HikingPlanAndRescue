@@ -90,7 +90,7 @@
 
 - __Delete a training__
 
-    POST: http://hikingplanandrescue.azurewebsites.net/api/Trainings/{training id here!}
+    DELETE: http://hikingplanandrescue.azurewebsites.net/api/Trainings/{training id here!}
 
     HEADER: Authorization, VALUE: bearer {access token here!}
 
