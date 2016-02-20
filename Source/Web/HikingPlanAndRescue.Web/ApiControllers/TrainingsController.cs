@@ -8,15 +8,23 @@
     using System.Web.Http;
     using System.Web.Http.Description;
     using ApiModels.Trainings;
+    using Data.Common;
     using HikingPlanAndRescue.Data;
     using HikingPlanAndRescue.Data.Models;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
+    using Services.Data;
+    using Services.Data.Contracts;
 
     [RoutePrefix("api/Trainings")]
     public class TrainingsController : BaseApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ITrainingsService db;
+
+        public TrainingsController(ITrainingsService trainings)
+        {
+            this.db = trainings;
+        }
 
         // GET: api/Trainings
         public IHttpActionResult GetTrainings()
@@ -27,13 +35,13 @@
             }
 
             var userId = this.User.Identity.GetUserId();
-            return this.Ok(this.db.Trainings.Where(x => x.UserId == userId).To<TrainingViewModel>());
+            return this.Ok(this.db.GetAllByUser(userId).To<TrainingViewModel>());
         }
 
         // GET: api/Trainings/5
         public IHttpActionResult GetTraining(int id)
         {
-            Training training = db.Trainings.Find(id);
+            Training training = db.GetById(id);
             if (training == null)
             {
                 return this.Json(new { error = "Not found." });
@@ -55,7 +63,7 @@
                 return this.Json(new { error = "Invalid model state." });
             }
 
-            var training = this.db.Trainings.FirstOrDefault(x => x.Id == trainingModel.Id);
+            var training = this.db.GetById(trainingModel.Id);
             if (training == null)
             {
                 return this.Json(new { error = "Training with provided Id not found." });
@@ -68,9 +76,7 @@
 
             this.Mapper.Map(trainingModel, training);
 
-            this.db.Entry(training).State = EntityState.Modified;
-
-            db.SaveChanges();
+            db.Save();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -86,8 +92,8 @@
             var training = Mapper.Map<Training>(model);
             training.UserId = User.Identity.GetUserId();
 
-            db.Trainings.Add(training);
-            db.SaveChanges();
+            db.Add(training);
+            db.Save();
 
             return Ok(training.Id);
         }
@@ -95,7 +101,7 @@
         // DELETE: api/Trainings/5
         public IHttpActionResult DeleteTraining(int id)
         {
-            Training training = db.Trainings.Find(id);
+            Training training = db.GetById(id);
             if (training == null)
             {
                 return this.Json(new { error = "Training not found." });
@@ -106,8 +112,8 @@
                 return this.Json(new { error = "Cannot delete trainings you do not own" });
             }
 
-            db.Trainings.Remove(training);
-            db.SaveChanges();
+            db.Delete(training);
+            db.Save();
 
             return Ok(training);
         }
@@ -118,12 +124,8 @@
             {
                 db.Dispose();
             }
-            base.Dispose(disposing);
-        }
 
-        private bool TrainingExists(int id)
-        {
-            return db.Trainings.Count(e => e.Id == id) > 0;
+            base.Dispose(disposing);
         }
     }
 }
