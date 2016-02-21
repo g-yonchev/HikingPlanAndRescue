@@ -36,7 +36,7 @@
 
         public virtual IQueryable<T> GetAll()
         {
-            return this.Data.All().OrderBy(x => x.CreatedOn);
+            return this.Data.All();
         }
 
         public virtual IQueryable<T> GetAllWithPaging(int page = 0, int pageSize = 10)
