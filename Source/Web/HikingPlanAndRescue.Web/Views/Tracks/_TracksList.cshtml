@@ -5,12 +5,26 @@
     <div class="col-md-3">
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="col-md-6">
-                <button class="glyphicon glyphicon-thumbs-up btnVote" data-id="@item.Id" data-value="1" onclick="onBtnVoteClick(this)"> </button>
-                <br />
-                <span class="votesCount" data-id="@item.Id">@item.VotesCount</span>
-                <br />
-                <button class="glyphicon glyphicon-thumbs-down btnVote" data-id="@item.Id" data-value="-1" onclick="onBtnVoteClick(this)"> </button>
+            <div class="col-md-6 well">
+                <div class="col-md-6 text-center">
+                    <div>
+                        <button class="glyphicon glyphicon-thumbs-up btnVote btn btn-default" data-id="@item.Id" data-value="1" onclick="onBtnVoteClick(this)"></button>
+                    </div>
+                    <div>
+                        <button class="glyphicon glyphicon-thumbs-down btnVote btn btn-default" data-id="@item.Id" data-value="-1" onclick="onBtnVoteClick(this)"></button>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <span class="votesCount lead" data-id="@item.Id">@item.VotesCount</span> <br />
+                    <small>votes</small>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-6 well text-center">
+                <span class="votesCount lead" data-id="@item.Id">@item.VotesCount</span> <br />
+                <small>votes</small>
             </div>
         }
         <div class="col-md-6">
