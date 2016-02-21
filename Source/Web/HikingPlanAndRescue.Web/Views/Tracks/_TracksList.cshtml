@@ -1,18 +1,16 @@
 ﻿@model IEnumerable<HikingPlanAndRescue.Web.ViewModels.Tracks.TrackPublicViewModel>
 
-<h1>Most popular tracks</h1>
-
 @foreach (var item in Model)
 {
     <div class="col-md-3">
         @if (User.Identity.IsAuthenticated)
         {
             <div class="col-md-6">
-                <button class="glyphicon glyphicon-thumbs-up voteUp" data-id="@item.Id" data-value="1"> </button>
+                <button class="glyphicon glyphicon-thumbs-up btnVote" data-id="@item.Id" data-value="1" onclick="onBtnVoteClick(this)"> </button>
                 <br />
-                <span id="votesCount" data-id="@item.Id">@item.VotesCount</span>
+                <span class="votesCount" data-id="@item.Id">@item.VotesCount</span>
                 <br />
-                <button class="glyphicon glyphicon-thumbs-down voteDown" data-id="@item.Id" data-value="-1"> </button>
+                <button class="glyphicon glyphicon-thumbs-down btnVote" data-id="@item.Id" data-value="-1" onclick="onBtnVoteClick(this)"> </button>
             </div>
         }
         <div class="col-md-6">

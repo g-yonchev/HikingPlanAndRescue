@@ -1,19 +1,11 @@
 ﻿namespace HikingPlanAndRescue.Web.ApiControllers
 {
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Linq;
     using System.Net;
-    using System.Net.Http;
     using System.Web.Http;
-    using System.Web.Http.Description;
     using ApiModels.Trainings;
-    using Data.Common;
-    using HikingPlanAndRescue.Data;
     using HikingPlanAndRescue.Data.Models;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
-    using Services.Data;
     using Services.Data.Contracts;
 
     [RoutePrefix("api/Trainings")]
@@ -115,7 +107,7 @@
             db.Delete(id);
             db.Save();
 
-            return Ok();
+            return Ok("ok");
         }
 
         protected override void Dispose(bool disposing)

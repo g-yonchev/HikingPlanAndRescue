@@ -2,11 +2,16 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Data.Models;
     using HikingPlanAndRescue.Services.Data;
     using HikingPlanAndRescue.Web.Infrastructure.Mapping;
     using HikingPlanAndRescue.Web.ViewModels.Tracks;
-
-    public class TracksController : Controller
+    using Infrastructure.CustomExceptions;
+    using Infrastructure.Filters;
+    using Microsoft.AspNet.Identity;
+    using Services.Data.Contracts;
+    using ViewModels.TrackVotes;
+    public class TracksController : BaseController
     {
         private const int PageSize = 15;
         private ITracksService tracks;

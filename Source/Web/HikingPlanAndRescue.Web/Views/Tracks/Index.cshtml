@@ -7,24 +7,57 @@
     ViewBag.AjaxPagingArea = "";
 }
 
+<h1>Most popular tracks</h1>
+
 <div id="items-list" class="container row">
     @Html.Partial("_TracksList", Model)
 </div>
 
+@Html.Partial("_Modal")
+
 @section scripts{
     <script>
-        var btnVoteUp = $('.voteUp');
-        var btnVoteDown = $('.voteDown');
+        //var btnVote = $('.btnVote');
 
-        btnVoteDown.on('click', function () {
-            console.log($(this).attr('data-id'));
-            console.log($(this).attr('data-value'));
-        });
+        function onBtnVoteClick(object) {
+            console.log(object);
+            var trackId = ($(object).attr('data-id'));
+            var vote = ($(object).attr('data-value'));
 
-        btnVoteUp.on('click', function () {
-            console.log($(this).attr('data-id'));
-            console.log($(this).attr('data-value'));
-        });
+            $.post(`/private/trackvotes/vote/`, {
+                trackId,
+                vote
+            }, function (data) {
+                if (data.error) {
+                    $('#modalTitle').html('Error');
+                    $('#modalMessage').html(data.error);
+                    $('#modal').modal();
+                    return;
+                }
+
+                console.log(data);
+                $(`.votesCount[data-id=${trackId}]`).html(data.vote);
+            });
+        }
+
+        //btnVote.on('click', function () {
+        //    var trackId = ($(this).attr('data-id'));
+        //    var vote = ($(this).attr('data-value'));
+
+        //    $.post(`/private/trackvotes/vote/`, {
+        //        trackId,
+        //        vote
+        //    }, function (data) {
+        //        if (data.error) {
+        //            $('#modalTitle').html('Error');
+        //            $('#modalMessage').html(data.error);
+        //            $('#modal').modal();
+        //            return;
+        //        }
+        //        console.log(data);
+        //        $(`#votesCount[data-id=${trackId}]`).html(data.vote);
+        //    });
+        //});
 
     </script>
 }

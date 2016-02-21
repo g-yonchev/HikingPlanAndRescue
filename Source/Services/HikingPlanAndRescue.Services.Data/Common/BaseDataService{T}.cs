@@ -27,7 +27,7 @@
             var entity = this.Data.GetById(id);
             if (entity == null)
             {
-                throw new CustomServiceOperationException("No such training found.");
+                throw new CustomServiceOperationException("No object with provided id found.");
             }
 
             this.Data.Delete(entity);

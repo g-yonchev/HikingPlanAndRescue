@@ -250,6 +250,7 @@
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
     <Compile Include="Areas\Private\Controllers\CheckedInTrainingsController.cs" />
     <Compile Include="Areas\Private\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Private\Controllers\TrackVotesController.cs" />
     <Compile Include="Areas\Private\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackCreateViewModel.cs" />
@@ -293,6 +294,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Tracks\TrackPublicViewModel.cs" />
+    <Compile Include="Areas\Private\Views\TrackVotes\TrackVoteViewModel.cs" />
     <Compile Include="ViewModels\Users\UserPublicViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

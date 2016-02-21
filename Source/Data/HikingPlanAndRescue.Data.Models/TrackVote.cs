@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using Common.Models;
 
-    public class TrackVote : IEntitiyWithCreator, IDeletableEntity, IAuditInfo
+    public class TrackVote : IAuditInfo, IDeletableEntity, IEntitiyWithCreator
     {
         [Key, Column(Order = 0)]
         public string UserId { get; set; }
@@ -19,12 +19,12 @@
 
         public VoteType Vote { get; set; }
 
-        public bool IsDeleted { get;  set; }
+        public DateTime CreatedOn { get; set; }
 
-        public DateTime? DeletedOn { get;  set; }
+        public DateTime? ModifiedOn { get; set; }
 
-        public DateTime CreatedOn { get;  set; }
+        public bool IsDeleted { get; set; }
 
-        public DateTime? ModifiedOn { get;  set; }
+        public DateTime? DeletedOn { get; set; }
     }
 }
