@@ -96,12 +96,6 @@
 
 ## Todos
 
-- send task description for Native Script
-
-- tracks have likes
-- private tracks page
-- public page with tracks
-
 - public home page with description
 
 - unit tests
