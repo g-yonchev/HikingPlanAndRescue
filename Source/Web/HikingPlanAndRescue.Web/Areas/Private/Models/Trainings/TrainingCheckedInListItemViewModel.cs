@@ -19,5 +19,13 @@
         public DateTime? CheckedInOn { get; set; }
 
         public TrackPublicViewModel Track { get; set; }
+
+        public double HoursLate
+        {
+            get
+            {
+                return (DateTime.Now - this.EndDate).TotalHours;
+            }
+        }
     }
 }

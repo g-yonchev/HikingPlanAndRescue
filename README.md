@@ -5,10 +5,6 @@
 
 ## Todos
 
-- fix bug for checked in trainings dipslay
-- documentation
-- public home page with description
-- tests
 
 ### Trainings
 - add how many hours are checked in trainings overdue
@@ -32,7 +28,10 @@
 - add equipment items for training
 - unit testing
 
-
+### Final fixes
+- documentation
+- public home page with description
+- tests
 
 
 

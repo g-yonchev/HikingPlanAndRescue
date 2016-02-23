@@ -9,11 +9,11 @@
 
             @if (tr.EndDate < DateTime.Now.AddHours(-5))
             {
-                <span class="label label-danger">WAY OVERDUE!</span>
+                <span class="label label-danger">@tr.HoursLate.ToString("0") hours late!</span>
             }
             else if (tr.EndDate < DateTime.Now.AddHours(-1))
             {
-                <span class="label label-warning">OVERDUE!</span>
+                <span class="label label-warning">@tr.HoursLate.ToString("0") hours late!</span>
             }
             else if (tr.StartDate <= DateTime.Now)
             {

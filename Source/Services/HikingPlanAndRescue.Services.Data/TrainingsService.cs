@@ -74,7 +74,7 @@
                     x => x.UserId == userId
                         && (fromDate == null || x.StartDate >= fromDate)
                         && (toDate == null || x.EndDate <= toDate))
-                .OrderBy(x => x.EndDate)
+                .OrderByDescending(x => x.EndDate)
                 .Skip(page * pageSize)
                 .Take(pageSize);
         }
