@@ -9,8 +9,11 @@
 
             <h2 class="lead">
                 <strong> @tr.User.FirstName @tr.User.LastName</strong>
-
-                @if (tr.EndDate < DateTime.Now.AddHours(-5))
+                @if (tr.Resolutions.Count() > 0)
+                {
+                    <span class="label label-info">@tr.HoursLate.ToString("0") hours late. (@tr.Resolutions.Count() resolutions)</span>
+                }
+                else if (tr.EndDate < DateTime.Now.AddHours(-5))
                 {
                     <span class="label label-danger">@tr.HoursLate.ToString("0") hours late!</span>
                 }
@@ -28,7 +31,13 @@
                 }
             </h2>
 
-            @if (tr.EndDate < DateTime.Now.AddHours(-5))
+            @if (tr.Resolutions.Count() > 0)
+            {
+                <p class="lead text-info">
+                    <strong>Due to Check-Out: </strong>@tr.EndDate
+                </p>
+            }
+            else if (tr.EndDate < DateTime.Now.AddHours(-5))
             {
                 <p class="lead text-danger">
                     <strong>Due to Check-Out: </strong>@tr.EndDate
