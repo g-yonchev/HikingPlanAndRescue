@@ -7,8 +7,6 @@
 
 
 ### Trainings
-- allow users to comment whether they have contacted and warned relatives (maybe mark checkedin training as contacted and then display by whom with comment)
-- add how many hours are checked-in trainings overdue
 - add user warning for overdue checkin at user homepage
 - add option to choose from other tracks or create new one when creating training
 
@@ -17,10 +15,10 @@
 - list user\`s tracks
 - more detailed information for track listing
 - add file (kml or gpx) for track
-- parse track parameters from file
-- display track in google maps or open street map
 
 ### Extras
+- parse track parameters from file
+- display track in google maps or open street map
 - suggest other tracks based on current preferences (length, location etc.)
 - automatically add weather conditions for training (some remote service)
 - add equipment items for training

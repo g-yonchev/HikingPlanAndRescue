@@ -22,5 +22,5 @@
     columns.Add(foo => foo.StartDate);
     columns.Add(foo => foo.EndDate);
     columns.Add(foo => foo.PredictedEndDate);
-    columns.Add().RenderValueAs(foo => foo.User.FirstName + " " + foo.User.LastName);
+    columns.Add().RenderValueAs(foo => foo.User.FirstName + " " + foo.User.LastName).Titled("User");
 }).WithPaging(15).Sortable().Filterable().WithMultipleFilters()

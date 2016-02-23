@@ -25,7 +25,10 @@
 
         public ActionResult Index()
         {
-            IQueryable<TrainingViewModel> trainings = this.trainings.GetAll().To<TrainingViewModel>();
+            IQueryable<TrainingViewModel> trainings = this.trainings
+                .GetAll()
+                .OrderBy(x => x.Id)
+                .To<TrainingViewModel>();
             return this.View(trainings);
         }
 
