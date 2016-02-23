@@ -1,8 +1,10 @@
 ﻿namespace HikingPlanAndRescue.Web.Areas.Private.Models
 {
     using System;
+    using System.Collections.Generic;
     using Data.Models;
     using Infrastructure.Mapping;
+    using TrainingResolutions;
     using Web.ViewModels.Tracks;
     using Web.ViewModels.Users;
 
@@ -19,6 +21,8 @@
         public DateTime? CheckedInOn { get; set; }
 
         public TrackPublicViewModel Track { get; set; }
+
+        public IEnumerable<ResolutionViewModel> Resolutions { get; set; }
 
         public double HoursLate
         {

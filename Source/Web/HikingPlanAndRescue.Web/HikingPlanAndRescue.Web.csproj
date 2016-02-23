@@ -254,11 +254,14 @@
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
     <Compile Include="Areas\Private\Controllers\CheckedInTrainingsController.cs" />
     <Compile Include="Areas\Private\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Private\Controllers\ResolutionsController.cs" />
     <Compile Include="Areas\Private\Controllers\TrackVotesController.cs" />
     <Compile Include="Areas\Private\Controllers\TrainingsController.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackCreateViewModel.cs" />
     <Compile Include="Areas\Private\Models\Tracks\TrackListViewModel.cs" />
+    <Compile Include="Areas\Private\Models\TrainingResolutions\ResolutionAddViewModel.cs" />
+    <Compile Include="Areas\Private\Models\TrainingResolutions\ResolutionViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingAjaxPredictViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingCheckedInListItemViewModel.cs" />
     <Compile Include="Areas\Private\Models\Trainings\TrainingCreateViewModel.cs" />
@@ -374,6 +377,7 @@
     <Content Include="Areas\Private\Views\CheckedInTrainings\_CheckedInTrainingsList.cshtml" />
     <Content Include="Areas\Private\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Private\Views\Trainings\_TrainingsStats.cshtml" />
+    <Content Include="Areas\Private\Views\Shared\_ResolutionListItem.cshtml" />
     <None Include="Properties\PublishProfiles\HikingPlanAndRescue - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -437,7 +441,7 @@
     <Content Include="Views\Tracks\_TracksList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Private\Views\Shared\" />
+    <Folder Include="Areas\Private\Views\Resolutions\" />
     <Folder Include="ViewModels\Home\" />
   </ItemGroup>
   <ItemGroup>

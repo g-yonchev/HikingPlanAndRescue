@@ -9,6 +9,7 @@
     {
         public Training()
         {
+            this.Resolutions = new HashSet<Resolution>();
         }
 
         public DateTime? CheckedInOn { get; set; }
@@ -35,6 +36,7 @@
 
         public virtual Track Track { get; set; }
 
+        public virtual ICollection<Resolution> Resolutions { get; set; }
         // weather
         // equioment
     }

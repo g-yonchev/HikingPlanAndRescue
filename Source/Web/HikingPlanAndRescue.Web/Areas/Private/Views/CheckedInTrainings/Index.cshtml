@@ -21,6 +21,8 @@
     @Html.Partial("_CheckedInTrainingsList", Model)
 </div>
 
+@Html.Partial("_Modal")
+
 @section Scripts {
     <script>
         function updateTime(){
@@ -50,5 +52,44 @@
             document.getElementById('clock').innerHTML = t_str;
         }
         setInterval(updateTime, 1000);
+    </script>
+    <script id="training-resolutions">
+        function btnAddResolutionClick(clickedBtn) {
+            $(clickedBtn).hide();
+            var trainingId = $(clickedBtn).attr('data-id');
+            $(`.resolution-form[data-id="${trainingId}"]`).show();
+        }
+
+        function btnSubmitResolutionClick(clickedBtn) {
+            var trainingId = $(clickedBtn).attr('data-id');
+            var resolutionSubmitForm = $(`.resolution-form[data-id="${trainingId}"]`);
+            resolutionSubmitForm.hide();
+            var comment = resolutionSubmitForm.find('textarea').val();
+            $.post(`/private/resolutions/add`, {
+                trainingId,
+                comment
+            }, function (response) {
+                if (response.error) {
+                    $('#modalTitle').html('Error');
+                    $('#modalMessage').html(response.error);
+                    $('#modal').modal();
+                } else {
+                    var resolutionsList = $(`.resolutions-list[data-id=${trainingId}]`);
+                    resolutionsList.append(response);
+                    var listContainer = $(`.resolutions-list-container[data-id="${trainingId}"]`);
+                    listContainer.show();
+                }
+            });
+        }
+
+        function btnShowHideResolutionClick(clickedBtn) {
+            var trainingId = $(clickedBtn).attr('data-id');
+            var listContainer = $(`.resolutions-list-container[data-id="${trainingId}"]`);
+            if (listContainer.css('display') == 'none') {
+                listContainer.show();
+            } else {
+                listContainer.hide();
+            }
+        }
     </script>
 }

@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConstants.cs" />
-    <Compile Include="CustomExceptions\ServiceOperationException.cs" />
+    <Compile Include="CustomExceptions\CustomServiceOperationException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

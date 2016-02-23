@@ -7,8 +7,6 @@
 
 
 ### Trainings
-- add how many hours are checked in trainings overdue
-- plan - add a button to check-in the track on create, think about cancelling checkinout and manual date editing
 - allow users to comment whether they have contacted and warned relatives (maybe mark checkedin training as contacted and then display by whom with comment)
 - add how many hours are checked-in trainings overdue
 - add user warning for overdue checkin at user homepage

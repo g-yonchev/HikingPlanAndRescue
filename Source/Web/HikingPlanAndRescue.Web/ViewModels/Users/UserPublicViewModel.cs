@@ -15,5 +15,7 @@
         public string LastName { get; set; }
 
         public string GSM { get; set; }
+
+        public string Email { get; set; }
     }
 }

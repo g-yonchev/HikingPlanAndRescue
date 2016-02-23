@@ -64,6 +64,7 @@
     <Compile Include="Track.cs" />
     <Compile Include="TrackVote.cs" />
     <Compile Include="Training.cs" />
+    <Compile Include="Resolution.cs" />
     <Compile Include="VoteType.cs" />
   </ItemGroup>
   <ItemGroup>

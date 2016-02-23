@@ -2,59 +2,99 @@
 
 @foreach (var tr in Model)
 {
-    <div class="list-group-item">
+    <div class="list-group-item row">
 
-        <h2 class="lead">
-            <strong> @tr.User.FirstName @tr.User.LastName</strong>
+        <div class="training-details-container col-md-6">
+
+
+            <h2 class="lead">
+                <strong> @tr.User.FirstName @tr.User.LastName</strong>
+
+                @if (tr.EndDate < DateTime.Now.AddHours(-5))
+                {
+                    <span class="label label-danger">@tr.HoursLate.ToString("0") hours late!</span>
+                }
+                else if (tr.EndDate < DateTime.Now)
+                {
+                    <span class="label label-warning">@((tr.HoursLate * 60).ToString("0")) minutes late!</span>
+                }
+                else if (tr.StartDate <= DateTime.Now)
+                {
+                    <span class="label label-info">In progress...</span>
+                }
+                else if (tr.StartDate > DateTime.Now)
+                {
+                    <span class="label label-default">Not started.</span>
+                }
+            </h2>
 
             @if (tr.EndDate < DateTime.Now.AddHours(-5))
             {
-                <span class="label label-danger">@tr.HoursLate.ToString("0") hours late!</span>
+                <p class="lead text-danger">
+                    <strong>Due to Check-Out: </strong>@tr.EndDate
+                </p>
             }
             else if (tr.EndDate < DateTime.Now.AddHours(-1))
             {
-                <span class="label label-warning">@tr.HoursLate.ToString("0") hours late!</span>
+                <p class="text-warning">
+                    <strong>Due to Check-Out: </strong>@tr.EndDate
+                </p>
             }
-            else if (tr.StartDate <= DateTime.Now)
+            else
             {
-                <span class="label label-info">In progress...</span>
+                <p class="text-info">
+                    <strong>Due to Check-Out: </strong>@tr.EndDate
+                </p>
             }
-            else if (tr.StartDate > DateTime.Now)
+
+            <p class="text-primary">
+                Contact: <strong>@tr.User.GSM </strong>
+            </p>
+
+            <p>
+                <strong>Track Title:</strong> @tr.Track.Title
+            </p>
+
+            <p class="text-muted small">
+                Checked-In on: <strong>@tr.CheckedInOn </strong>
+                Start time: <strong>@tr.StartDate</strong>
+            </p>
+
+            @if (!tr.Resolutions.Any(x => x.UserId == User.Identity.GetUserId()))
             {
-                <span class="label label-default">Not started.</span>
+                <button class="btn btn-success"
+                        data-id="@tr.Id"
+                        onclick="btnAddResolutionClick(this)">
+                    Add resolution
+                </button>
+
+                <div data-id="@tr.Id" class="resolution-form" style="display:none">
+                    <textarea cols="50" rows="5" data-id="@tr.Id"></textarea>
+                    <br />
+                    <button data-id="@tr.Id" class="btn btn-success" onclick="btnSubmitResolutionClick(this)">Submit Resolution</button>
+                </div>
             }
-        </h2>
 
-        @if (tr.EndDate < DateTime.Now.AddHours(-5))
-        {
-            <p class="lead text-danger">
-                <strong>Due to Check-Out: </strong>@tr.EndDate
-            </p>
-        }
-        else if (tr.EndDate < DateTime.Now.AddHours(-1))
-        {
-            <p class="text-warning">
-                <strong>Due to Check-Out: </strong>@tr.EndDate
-            </p>
-        }
-        else
-        {
-            <p class="text-info">
-                <strong>Due to Check-Out: </strong>@tr.EndDate
-            </p>
-        }
+            @if (tr.Resolutions.Count() > 0)
+            {
+                <button class="btn btn-default"
+                        data-id="@tr.Id"
+                        onclick="btnShowHideResolutionClick(this)">
+                    Show/Hide resolutions
+                </button>
+            }
 
-        <p class="text-primary">
-            Contact: <strong>@tr.User.GSM </strong>
-        </p>
+        </div>
 
-        <p>
-            <strong>Track Title:</strong> @tr.Track.Title
-        </p>
+        <div class="resolutions-list-container col-md-6" data-id="@tr.Id" style="display:none">
+            <h3>Resolutions:</h3>
+            <div class="resolutions-list" data-id="@tr.Id">
+                @foreach (var res in tr.Resolutions)
+                {
+                    @Html.Partial("_ResolutionListItem", res)
+                }
+            </div>
+        </div>
 
-        <p class="text-muted small">
-            Checked-In on: <strong>@tr.CheckedInOn </strong>
-            Start time: <strong>@tr.StartDate</strong>
-        </p>
     </div>
 }

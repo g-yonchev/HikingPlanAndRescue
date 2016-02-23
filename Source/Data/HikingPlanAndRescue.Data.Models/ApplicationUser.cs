@@ -31,6 +31,8 @@
 
         public virtual ICollection<TrackVote> TrackVotes { get; set; }
 
+        public virtual ICollection<Resolution> Resolutions { get; set; }
+
         public bool IsDeleted { get;  set; }
 
         public DateTime? DeletedOn { get;  set; }

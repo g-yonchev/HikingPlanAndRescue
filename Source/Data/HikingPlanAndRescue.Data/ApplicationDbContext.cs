@@ -20,6 +20,8 @@
 
         public virtual IDbSet<TrackVote> TrackVotes { get; set; }
 
+        public virtual IDbSet<Resolution> TrainingResolutions { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
