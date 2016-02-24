@@ -83,7 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JokesControllerTests.cs" />
+    <Compile Include="PrivateTrainingsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +102,10 @@
     <ProjectReference Include="..\..\Services\HikingPlanAndRescue.Services.Data\HikingPlanAndRescue.Services.Data.csproj">
       <Project>{90fe4c4d-122a-406d-8a40-79c561fb8184}</Project>
       <Name>HikingPlanAndRescue.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\HikingPlanAndRescue.Services.Predictions\HikingPlanAndRescue.Services.Predictions.csproj">
+      <Project>{90041e74-f01d-4ab3-9028-176c120d78fd}</Project>
+      <Name>HikingPlanAndRescue.Services.Predictions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\HikingPlanAndRescue.Services.Web\HikingPlanAndRescue.Services.Web.csproj">
       <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>

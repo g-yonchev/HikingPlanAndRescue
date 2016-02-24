@@ -252,6 +252,7 @@
     <Compile Include="Areas\Admin\Models\Users\UserCreateViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserEditViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Private\Controllers\BasePrivateController.cs" />
     <Compile Include="Areas\Private\Controllers\CheckedInTrainingsController.cs" />
     <Compile Include="Areas\Private\Controllers\HomeController.cs" />
     <Compile Include="Areas\Private\Controllers\ResolutionsController.cs" />
@@ -441,6 +442,7 @@
     <Content Include="Views\Tracks\_TracksList.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Private\Views\BasePrivate\" />
     <Folder Include="Areas\Private\Views\Resolutions\" />
     <Folder Include="ViewModels\Home\" />
   </ItemGroup>

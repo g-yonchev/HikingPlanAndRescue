@@ -19,7 +19,7 @@
                 name: "Private_default",
                 url: "Private/{controller}/{action}/{id}",
                 defaults: new { action = "Index", id = UrlParameter.Optional },
-                constraints: new { authConstraint = new AuthenticationRouteConstraint() },
+                //constraints: new { authConstraint = new AuthenticationRouteConstraint() },
                 namespaces: new string[] { "HikingPlanAndRescue.Web.Areas.Private.Controllers" }
             );
         }

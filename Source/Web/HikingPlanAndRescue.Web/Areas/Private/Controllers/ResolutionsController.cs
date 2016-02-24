@@ -5,11 +5,12 @@
     using Data.Models;
     using HikingPlanAndRescue.Web.Controllers;
     using Infrastructure.CustomExceptions;
+    using Infrastructure.Filters;
     using Microsoft.AspNet.Identity;
     using Models.TrainingResolutions;
     using Services.Data.Contracts;
 
-    public class ResolutionsController : BaseController
+    public class ResolutionsController : BasePrivateController
     {
         private IResolutionsService resolutions;
         private IUsersService users;
@@ -21,6 +22,7 @@
         }
 
         // GET: Private/Resolutions
+        [AjaxRequestOnly]
         public ActionResult Add(ResolutionAddViewModel model)
         {
             var resolution = Mapper.Map<Resolution>(model);

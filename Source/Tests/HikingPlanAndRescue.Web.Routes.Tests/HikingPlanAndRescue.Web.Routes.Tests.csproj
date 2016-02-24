@@ -36,6 +36,10 @@
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MvcRouteTester, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvcRouteTester.Mvc5.2.2.0.1\lib\net45\MvcRouteTester.dll</HintPath>
       <Private>True</Private>
@@ -95,7 +99,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JokesRouteTests.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="PrivateCheckedInTrainingsRouteTests.cs" />
+    <Compile Include="PrivateTrainingsRouteTests.cs" />
+    <Compile Include="PublicTracksRouteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

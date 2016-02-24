@@ -10,7 +10,7 @@
     using Services.Data.Contracts;
     using Web.Controllers;
 
-    public class TrackVotesController : BaseController
+    public class TrackVotesController : BasePrivateController
     {
         private ITracksService tracks;
         private ITrackVotesService votes;

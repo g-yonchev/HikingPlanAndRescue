@@ -17,7 +17,7 @@
     using Services.Predictions;
     using Web.Controllers;
 
-    public class TrainingsController : BaseController
+    public class TrainingsController : BasePrivateController
     {
         private const int PageSize = 15;
         private ITrainingsService trainings;

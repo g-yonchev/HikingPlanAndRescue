@@ -10,7 +10,7 @@
     using Services.Data.Contracts;
     using Web.Controllers;
 
-    public class CheckedInTrainingsController : BaseController
+    public class CheckedInTrainingsController : BasePrivateController
     {
         private const int PageSize = 15;
         private ITrainingsService trainings;
