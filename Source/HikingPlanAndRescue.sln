@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Services.Web", "Services\HikingPlanAndRescue.Services.Web\HikingPlanAndRescue.Services.Web.csproj", "{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Services.Web.Tests", "Tests\HikingPlanAndRescue.Services.Web.Tests\HikingPlanAndRescue.Services.Web.Tests.csproj", "{D0D962BD-363D-4A22-9DB1-53136CE8EBF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Services.Data.Tests", "Tests\HikingPlanAndRescue.Services.Web.Tests\HikingPlanAndRescue.Services.Data.Tests.csproj", "{D0D962BD-363D-4A22-9DB1-53136CE8EBF4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HikingPlanAndRescue.Web.Routes.Tests", "Tests\HikingPlanAndRescue.Web.Routes.Tests\HikingPlanAndRescue.Web.Routes.Tests.csproj", "{C3A300EF-D136-4334-9211-466B9E699339}"
 EndProject

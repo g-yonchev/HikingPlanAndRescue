@@ -3,9 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Claims;
-    using System.Security.Principal;
-    using System.Threading;
     using System.Web.Mvc;
     using Areas.Private.Controllers;
     using Areas.Private.Models;
@@ -48,6 +45,7 @@
                 }.AsQueryable());
 
             var predictionsServiceMock = new Mock<ITrainingPrediction>();
+
             //predictionsServiceMock.Setup()
 
             var mock = new Mock<ControllerContext>();
@@ -92,6 +90,7 @@
                 }.AsQueryable());
 
             var predictionsServiceMock = new Mock<ITrainingPrediction>();
+
             //predictionsServiceMock.Setup()
 
             var mock = new Mock<ControllerContext>();
@@ -224,6 +223,7 @@
                 );
 
             var predictionsServiceMock = new Mock<ITrainingPrediction>();
+
             //predictionsServiceMock.Setup()
 
             var mock = new Mock<ControllerContext>();
@@ -257,6 +257,7 @@
             };
 
             var predictionsServiceMock = new Mock<ITrainingPrediction>();
+
             //predictionsServiceMock.Setup()
 
             var mock = new Mock<ControllerContext>();
@@ -291,6 +292,7 @@
             };
 
             var predictionsServiceMock = new Mock<ITrainingPrediction>();
+
             //predictionsServiceMock.Setup()
 
             var mock = new Mock<ControllerContext>();
