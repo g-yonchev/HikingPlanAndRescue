@@ -1,38 +1,12 @@
 # Hiking Plan and Rescue Service
 
+## Description
 
+This web app allows you to store information about your trainings and later view statistics about your performance. What`s really cool is that when the app has collected enough data about your performanc on various trainings it can prognose the amount of water, calories and time you will need for your next adventure. To do this a Multivariate Linear Regression algorythm is used. Another cool feature is the ability to check-in your training so that others can see when you are expected to come back and if you happen to be too late, the community can try to contact you, launch a search and rescue mission and contact your relatives. This way you can be a little bit more safer when you wander out alone in the mountain, knowing that someone knows about you and your predicted checkout time. Of course, you shouldn`t be alone in the mountains, but we all know it happens sometimes :).
 
+The web app also features a client mobile app that consumes a WebApi 2 service. See HikingPlanAndRescueMobile in my repo.
 
-## Todos
-
-
-### Trainings
-- add user warning for overdue checkin at user homepage
-- add option to choose from other tracks or create new one when creating training
-
-### Tracks
-- filter tracks by date as well (button for latest or most popular)
-- list user\`s tracks
-- more detailed information for track listing
-- add file (kml or gpx) for track
-
-### Extras
-- parse track parameters from file
-- display track in google maps or open street map
-- suggest other tracks based on current preferences (length, location etc.)
-- automatically add weather conditions for training (some remote service)
-- add equipment items for training
-- unit testing
-
-### Final fixes
-- documentation
-- public home page with description
-- tests
-
-
-
-
-
+Live website: (website)[http://hikingplanandrescue.azurewebsites.net]
 
 
 ## RESTful services
@@ -136,18 +110,23 @@
 
 
 
-## Description
+## Todos
 
-### Statistics (Track your performance)
 
-Tracker that lets you upload your workouts via .gpx or .kml, set the date and duration and gives statistics about your workout (see from sportstracker app).
-You don`t have to use a dedicated app - you can upload any kml or gpx.
-Weather is automatically checked from online service and taken into consideration in your statistics or you can manually enter it. wind and direction of wind is also important factor. the kind of terrain as well. You can also enter the amount of water and food consumed and gear used by you. Gear has weight and volume.
+### Trainings
+- add user warning for overdue checkin at user homepage
+- add option to choose from other tracks or create new one when creating training
 
-### Plan (Plan your next adventure)
-You can upload a projected Track for some time in the future (or Tracks for a series of days) and the app will estimate the amount of calories you need (the food required) and the time required and the equipment required to finish the Track based on weather predictions and your performance for previously tracked Tracks. The app takes into consideration all your previous performances for the kind of terrain(off road, ascent and descent), weather(wind direction, temperature, humidity and so on). Maybe some kind of machine learning for predictions (from DSA course the weather prediction algorythm).
+### Tracks
+- filter tracks by date as well (button for latest or most popular)
+- list user\`s tracks
+- more detailed information for track listing
+- add file (kml or gpx) for track
 
-### Rescue (Get help from community as early as possible if needed)
-The app will also allow users to check in their planned Track and later check it out when done. This way if something happens to them the rescue service will get informaed if they don`t check out in the projected time. If a user abuses the service too many times, he`s banned (doesn`t check out and generates many false signals). The user must provide gsm and gsm of relatives in order first to check if he just forgot to check out.
-The app will be open source - meaning every registered user can check warning registered Tracks for other users - the users take care of each other and make sure if someone is lost to contact relatives and rescue services if it turns out to be a real lost case. The user can choose to share their registered Tracks with other users or all. The other users will be notified if he`s not checked out on time. If he registers the Track publicly it will appear in overdue Tracks list where anyone registered can see it.
-The end goal is a community that can share their outdoor workout routines and track each others progress and status. That way if something happens to one, others will know as early as possible.
+### Extras
+- parse track parameters from file
+- display track in google maps or open street map
+- suggest other tracks based on current preferences (length, location etc.)
+- automatically add weather conditions for training (some remote service)
+- add equipment items for training
+- unit testing
