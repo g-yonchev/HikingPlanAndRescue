@@ -2,11 +2,11 @@
 
 ## Description
 
-This web app allows you to store information about your trainings and later view statistics about your performance. What`s really cool is that when the app has collected enough data about your performanc on various trainings it can prognose the amount of water, calories and time you will need for your next adventure. To do this a Multivariate Linear Regression algorythm is used. Another cool feature is the ability to check-in your training so that others can see when you are expected to come back and if you happen to be too late, the community can try to contact you, launch a search and rescue mission and contact your relatives. This way you can be a little bit more safer when you wander out alone in the mountain, knowing that someone knows about you and your predicted checkout time. Of course, you shouldn`t be alone in the mountains, but we all know it happens sometimes :).
+This web app allows you to store information about your trainings and later view statistics about your performance. What\`s really cool is that when the app has collected enough data about your performanc on various trainings it can prognose the amount of water, calories and time you will need for your next adventure. To do this a Multivariate Linear Regression algorythm is used. Another cool feature is the ability to check-in your training so that others can see when you are expected to come back and if you happen to be too late, the community can try to contact you, launch a search and rescue mission and contact your relatives. This way you can be a little bit more safer when you wander out alone in the mountain, knowing that someone knows about you and your predicted checkout time. Of course, you shouldn`t be alone in the mountains, but we all know it happens sometimes :).
 
 The web app also features a client mobile app that consumes a WebApi 2 service. See HikingPlanAndRescueMobile in my repo.
 
-Live website: (website)[http://hikingplanandrescue.azurewebsites.net]
+Live website: http://hikingplanandrescue.azurewebsites.net
 
 
 ## RESTful services
