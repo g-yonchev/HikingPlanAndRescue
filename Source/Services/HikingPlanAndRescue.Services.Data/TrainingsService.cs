@@ -51,6 +51,10 @@
             }
             else if (command == "checkout")
             {
+                if (training.CheckedInOn == null)
+                {
+                    throw new CustomServiceOperationException("Cannot Check Out training that`s not checked in.");
+                }
                 training.CheckedOutOn = DateTime.Now;
                 training.PredictedEndDate = training.EndDate;
                 training.EndDate = DateTime.Now;

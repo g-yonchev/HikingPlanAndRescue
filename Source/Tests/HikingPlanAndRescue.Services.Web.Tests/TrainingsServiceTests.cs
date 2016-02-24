@@ -270,5 +270,116 @@
             var trainings = new TrainingsService(trainingsRepo.Object, usersRepo.Object);
             var result = trainings.UpdateCheckInOut(trainingId, command, userId);
         }
+
+        [Test]
+        public void UpdateCheckInOutWithCheckOutCommandAndLegalRequestShouldThrow()
+        {
+            int trainingId = 1;
+            string userId = "user1";
+            string command = "checkout";
+
+            var trainingsRepo = new Mock<IDbRepository<Training>>();
+            trainingsRepo.Setup(
+                x =>
+                x.All())
+                .Returns(new List<Training>()
+                {
+                    new Training()
+                    {
+                        Id = trainingId,
+                        UserId = userId,
+                        CheckedInOn = DateTime.Now
+                    },
+                    new Training()
+                    {
+                        Id = trainingId + 1,
+                        UserId = userId,
+                        CheckedInOn = DateTime.Now
+                    }
+                }.AsQueryable());
+
+            var usersRepo = new Mock<IDbRepository<ApplicationUser>>();
+
+            var trainings = new TrainingsService(trainingsRepo.Object, usersRepo.Object);
+            var result = trainings.UpdateCheckInOut(trainingId, command, userId);
+
+            Assert.AreNotEqual(null, result.CheckedOutOn);
+            Assert.AreNotEqual(null, result.EndDate);
+            Assert.AreEqual(result.CheckedOutOn.Value.ToShortDateString(), result.EndDate.ToShortDateString());
+        }
+
+        [Test]
+        [ExpectedException(typeof(CustomServiceOperationException))]
+        public void UpdateCheckInOutWithCheckOutCommandAndIllegalRequestShouldThrow()
+        {
+            int trainingId = 1;
+            string userId = "user1";
+            string command = "checkout";
+
+            var trainingsRepo = new Mock<IDbRepository<Training>>();
+            trainingsRepo.Setup(
+                x =>
+                x.All())
+                .Returns(new List<Training>()
+                {
+                    new Training()
+                    {
+                        Id = trainingId,
+                        UserId = userId
+                    },
+                    new Training()
+                    {
+                        Id = trainingId + 1,
+                        UserId = userId
+                    }
+                }.AsQueryable());
+
+            var usersRepo = new Mock<IDbRepository<ApplicationUser>>();
+
+            var trainings = new TrainingsService(trainingsRepo.Object, usersRepo.Object);
+            var result = trainings.UpdateCheckInOut(trainingId, command, userId);
+        }
+
+        [Test]
+        public void UpdateCheckInOutWithResetCommandAndLegalRequestShouldThrow()
+        {
+            int trainingId = 1;
+            string userId = "user1";
+            string command = "reset";
+
+            var trainingsRepo = new Mock<IDbRepository<Training>>();
+            var predictedEndDate = DateTime.Now.AddDays(2);
+            trainingsRepo.Setup(
+                x =>
+                x.All())
+                .Returns(new List<Training>()
+                {
+                    new Training()
+                    {
+                        Id = trainingId,
+                        UserId = userId,
+                        CheckedInOn = DateTime.Now,
+                        CheckedOutOn = DateTime.Now.AddDays(1),
+                        PredictedEndDate = predictedEndDate
+                    },
+                    new Training()
+                    {
+                        Id = trainingId + 1,
+                        UserId = userId,
+                        CheckedInOn = DateTime.Now,
+                        CheckedOutOn = DateTime.Now.AddDays(1),
+                        PredictedEndDate = predictedEndDate
+                    }
+                }.AsQueryable());
+
+            var usersRepo = new Mock<IDbRepository<ApplicationUser>>();
+
+            var trainings = new TrainingsService(trainingsRepo.Object, usersRepo.Object);
+            var result = trainings.UpdateCheckInOut(trainingId, command, userId);
+
+            Assert.AreEqual(null, result.CheckedOutOn);
+            Assert.AreEqual(null, result.CheckedInOn);
+            Assert.AreEqual(predictedEndDate, result.PredictedEndDate);
+        }
     }
 }
