@@ -274,5 +274,53 @@
                         Assert.AreEqual(caloriesBurned, viewModel.Calories);
                     });
         }
+
+        [Test]
+        public void EditShouldWorkCorrectlyWithValidModelState()
+        {
+            var caloriesBurned = 1500;
+
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute(typeof(TrainingsController).Assembly);
+
+            var trainingsServiceMock = new Mock<ITrainingsService>();
+
+            var training = new TrainingEditViewModel()
+            {
+                Calories = caloriesBurned,
+            };
+
+            var predictionsServiceMock = new Mock<ITrainingPrediction>();
+            //predictionsServiceMock.Setup()
+
+            var mock = new Mock<ControllerContext>();
+            mock.SetupGet(p => p.HttpContext.User.Identity.Name).Returns("anon");
+            mock.SetupGet(p => p.HttpContext.Request.IsAuthenticated).Returns(true);
+
+            var controller = new TrainingsController(trainingsServiceMock.Object, predictionsServiceMock.Object);
+            controller.ControllerContext = mock.Object;
+            controller.WithCallTo(x => x.Edit(training))
+                .ShouldRedirectToRoute("");
+        }
+
+        [Test]
+        public void DeleteShouldWorkCorrectly()
+        {
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute(typeof(TrainingsController).Assembly);
+
+            var trainingsServiceMock = new Mock<ITrainingsService>();
+
+            var predictionsServiceMock = new Mock<ITrainingPrediction>();
+
+            var mock = new Mock<ControllerContext>();
+            mock.SetupGet(p => p.HttpContext.User.Identity.Name).Returns("anon");
+            mock.SetupGet(p => p.HttpContext.Request.IsAuthenticated).Returns(true);
+
+            var controller = new TrainingsController(trainingsServiceMock.Object, predictionsServiceMock.Object);
+            controller.ControllerContext = mock.Object;
+            controller.WithCallTo(x => x.Delete(It.IsAny<int>()))
+                .ShouldRedirectToRoute("");
+        }
     }
 }
